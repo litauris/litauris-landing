@@ -1,28 +1,22 @@
 <template>
   <header>
     <div class="wrapper">
-      <div class="logo-wrapper">
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="40" height="40" />
-        <p>Litauris</p>
+      <div class="logo">
+        <img src="@/assets/logo.svg" alt="Litauris" width="40" />
+        <span>Litauris</span>
       </div>
 
-      <button>
+      <router-link class="case" to="/case">
         <span>Case Study</span>
         <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
-      </button>
+      </router-link>
 
       <div class="menu-wrapper">
-        <button>Аdvantages</button>
-        <button>Services</button>
-        <button class="grey">Let's talk</button>
+        <a href="#">Аdvantages</a>
+        <a href="#">Services</a>
+        <a class="outline" href="https://calendly.com/ceo-glu6">Let's talk</a>
       </div>
     </div>
-    <!-- <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div> -->
   </header>
 </template>
 <script>
@@ -32,44 +26,38 @@ export default {
 </script>
 <style scoped>
 header {
-  padding-block: 20px;
   background-color: var(--background-color-soft);
   border-bottom: 1px solid #bbbcbd;
-
   font-family: var(--font-secondary);
+  padding: 20px 10px;
 }
 .wrapper {
-  max-width: 1280px;
   display: flex;
   justify-content: space-between;
-  width: 100%;
   margin-inline: auto;
+  max-width: var(--max-content-width);
+  width: 100%;
 }
-.logo-wrapper {
-  display: flex;
-  align-items: center;
 
+.logo {
+  align-items: center;
+  column-gap: 0.5rem;
+  display: flex;
   font-weight: 500;
 }
-.logo {
-  margin-bottom: 16px;
+.logo span {
+  margin-top: 0.5rem;
 }
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 20px;
-  gap: 8px;
 
-  background: none;
-  border: none;
-}
-button.grey {
-  border-radius: 24px;
-  background-color: #bbbcbd;
+.case {
+  align-items: center;
+  column-gap: 0.5rem;
+  display: flex;
 }
 
 .menu-wrapper {
+  align-items: center;
+  column-gap: 2rem;
   display: flex;
 }
 </style>

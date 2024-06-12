@@ -18,24 +18,24 @@
   --background-color-soft: #cdcecf;
   --background-color-dark: #101112;
 
+  --heading-color: #191b1d;
+  --heading-color-light: #ffffff;
+
   --text-color: #080808;
+  --text-color-dark: #443f3f;
   --text-color-soft: #b1b1b6;
   --text-color-light: #e1e5e9;
 
   --font-primary: 'General Sans', sans-serif;
   --font-secondary: 'Graphik LCG', sans-serif;
+
+  --max-content-width: 1280px;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-button {
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
 }
 
 body {
@@ -45,7 +45,7 @@ body {
   transition:
     color 0.5s,
     background-color 0.5s;
-  font-family: var(--font-primary), sans-serif;
+  font-family: var(--font-primary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
