@@ -1,22 +1,26 @@
 @font-face {
   font-family: 'Graphik LCG';
-  src: local('Graphik LCG Regular'), url('font/GraphikLCG-Regular.woff2') format('woff2');
+  src:
+    local('Graphik LCG Regular'),
+    url('font/GraphikLCG-Regular.woff2') format('woff2');
   font-weight: 400;
 }
 @font-face {
   font-family: 'Graphik LCG';
-  src: local('Graphik LCG Medium'), url('font/GraphikLCG-Medium.woff2') format('woff2');
+  src:
+    local('Graphik LCG Medium'),
+    url('font/GraphikLCG-Medium.woff2') format('woff2');
   font-weight: 500;
 }
 
 :root {
-  --background-color: #FFFFFF;
-  --background-color-soft: #CDCECF;
+  --background-color: #ffffff;
+  --background-color-soft: #cdcecf;
   --background-color-dark: #101112;
 
   --text-color: #080808;
-  --text-color-soft: #B1B1B6;
-  --text-color-light: #E1E5E9;
+  --text-color-soft: #b1b1b6;
+  --text-color-light: #e1e5e9;
 
   --font-primary: 'General Sans', sans-serif;
   --font-secondary: 'Graphik LCG', sans-serif;
@@ -29,6 +33,7 @@
 }
 
 button {
+  color: inherit;
   cursor: pointer;
   font: inherit;
 }
@@ -37,7 +42,9 @@ body {
   min-height: 100vh;
   color: var(--text-color);
   background: var(--background-color);
-  transition: color 0.5s, background-color 0.5s;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
   font-family: var(--font-primary), sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
