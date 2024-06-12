@@ -6,24 +6,39 @@
         <span>Litauris</span>
       </div>
 
-      <router-link class="case" to="/case">
+      <RouterLink class="case" to="/case" v-if="!isCasePage">
         <span>Case Study</span>
         <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
-      </router-link>
+      </RouterLink>
+      <RouterLink class="case" to="/" v-else>
+        <span>About us</span>
+        <img src="@/assets/icons/plus.svg" alt="Plus" />
+      </RouterLink>
+      <!-- @TODO: Alignment -->
 
       <div class="menu-wrapper">
-        <a href="#">Аdvantages</a>
-        <a href="#">Services</a>
-        <a class="outline" href="https://calendly.com/ceo-glu6">Let's talk</a>
+        <!-- @TODO: Mobile -->
+        <a href="#" v-if="!isCasePage">Advantages</a>
+        <a href="#" v-if="!isCasePage">Services</a>
+        <a class="outline" href="https://calendly.com/ceo-glu6">
+          {{ isCasePage ? 'Book a Call' : `Let's talk` }}
+        </a>
       </div>
     </div>
   </header>
 </template>
+
 <script>
 export default {
-  name: 'Header'
-}
+  name: 'Header',
+  computed: {
+    isCasePage() {
+      return this.$route.name === 'case';
+    },
+  },
+};
 </script>
+
 <style scoped>
 header {
   background-color: var(--background-color-soft);
