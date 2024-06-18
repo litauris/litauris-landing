@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <p>Services</p>
       <div class="services">
         <div class="line">
@@ -56,9 +56,6 @@ export default {
 .wrapper {
   display: flex;
   flex-direction: column;
-  max-width: var(--max-content-width);
-  margin-inline: auto;
-  width: 100%;
 
   gap: 100px;
   padding-block: 100px;

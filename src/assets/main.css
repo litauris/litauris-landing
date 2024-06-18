@@ -15,3 +15,9 @@ a.outline {
   border-radius: 24px;
   padding: 8px 20px;
 }
+
+.row {
+  margin-inline: auto;
+  max-width: var(--max-content-width);
+  padding-inline: 20px;
+}

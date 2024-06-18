@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <h2>
         Web & Mobile Applications.
         <span class="light">Low Code.</span>
@@ -30,9 +30,6 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-inline: auto;
-  max-width: var(--max-content-width);
-  width: 100%;
 
   gap: 100px;
   padding-block: 100px;

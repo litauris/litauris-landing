@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <p>Advantages</p>
       <div class="advantages">
         <p>
@@ -30,9 +30,6 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-block: 100px;
-  margin-inline: auto;
-  max-width: var(--max-content-width);
-  width: 100%;
   color: var(--text-color-light);
 }
 .advantages {
