@@ -19,8 +19,8 @@
 </template>
 <script>
 export default {
-  name: 'HeroBanner'
-}
+  name: 'HeroBanner',
+};
 </script>
 <style scoped>
 section {
@@ -39,7 +39,7 @@ h2 {
   flex-direction: column;
 
   color: var(--heading-color);
-  font-size: 60px;
+  font-size: 30px;
   font-weight: 500;
 }
 h2 span {
@@ -52,5 +52,11 @@ h2 span {
 }
 .herobanner span {
   width: 400px;
+}
+
+@media (width >= 1024px) {
+  h2 {
+    font-size: 60px;
+  }
 }
 </style>

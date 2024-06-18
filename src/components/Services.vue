@@ -49,8 +49,8 @@
 </template>
 <script>
 export default {
-  name: 'Services'
-}
+  name: 'Services',
+};
 </script>
 <style scoped>
 .wrapper {
@@ -66,6 +66,9 @@ export default {
   padding-block: 20px;
   display: flex;
   justify-content: space-between;
+}
+.line:last-child {
+  border: none;
 }
 h3 {
   font-size: 30px;
