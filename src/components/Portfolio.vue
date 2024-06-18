@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <p>Portfolio</p>
       <h3>
         We are a creative agency working with brands – building insightful strategy, creating unique
@@ -51,9 +51,6 @@ export default {
 .wrapper {
   display: flex;
   flex-direction: column;
-  margin-inline: auto;
-  max-width: var(--max-content-width);
-  width: 100%;
 }
 h3 {
   font-weight: 500;

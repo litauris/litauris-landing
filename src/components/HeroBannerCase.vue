@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <h2>The Wondr Restaurant Mobile Application 2 Months Post-launch</h2>
       <div class="herobanner">
         <span>
@@ -24,9 +24,6 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  margin-inline: auto;
-  max-width: var(--max-content-width);
-  width: 100%;
 
   gap: 100px;
   padding-block: 100px;

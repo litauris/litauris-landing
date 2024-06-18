@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <p>Process with Us</p>
       <div>
         <div class="line">
@@ -64,10 +64,7 @@ section {
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: var(--max-content-width);
-  margin-inline: auto;
   padding-block: 100px;
-  width: 100%;
 }
 .line {
   border-bottom: 1px solid #222528cc;

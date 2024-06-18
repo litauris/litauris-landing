@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <div class="contact">
         <a href="#">Write to Us</a>
         <a href="#">
@@ -26,9 +26,6 @@ export default {
   display: flex;
   flex-direction: column;
 
-  margin-inline: auto;
-  max-width: var(--max-content-width);
-  width: 100%;
   padding-block: 100px 32px;
   gap: 300px;
 }

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <div>
         <p>FAQ</p>
         <img src="@/assets/content/square-dark.svg" alt="square" />
@@ -22,10 +22,6 @@ section {
   color: var(--text-color-light);
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  margin-inline: auto;
-  max-width: var(--max-content-width);
-  width: 100%;
 
   padding-block: 100px;
 }

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper">
+    <div class="row wrapper">
       <p>What are you waiting for?</p>
       <h2>Get a stunning mobile app designed and online<span> within the next 10 days</span></h2>
       <button>
