@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="wrapper">
-      <img src="@/assets/content/banner-case.png" alt="banner" />
+      <img src="@/assets/content/banner-case.jpg" alt="banner" />
     </div>
   </section>
 </template>

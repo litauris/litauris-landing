@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="wrapper">
-      <img src="@/assets/content/banner.svg" alt="banner" />
+      <img src="@/assets/content/banner.jpg" alt="banner" />
       <h2>5X Faster Time to Market</h2>
     </div>
   </section>

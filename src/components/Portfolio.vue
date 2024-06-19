@@ -8,7 +8,7 @@
       </h3>
       <div class="slider">
         <div class="card">
-          <img src="@/assets/content/slide-1.png" alt="Slide-1" />
+          <img src="@/assets/content/slide-1.jpg" alt="Mobile Application" />
           <div class="card-text">
             <p>Mobile Application</p>
             <span
@@ -18,21 +18,21 @@
           </div>
         </div>
         <div class="card">
-          <img src="@/assets/content/slide-2.png" alt="Slide-2" />
+          <img src="@/assets/content/slide-2.jpg" alt="Admin Panel" />
           <div class="card-text">
             <p>Admin Panel</p>
             <span>Branding & Design</span>
           </div>
         </div>
         <div class="card">
-          <img src="@/assets/content/slide-3.png" alt="Slide-3" />
+          <img src="@/assets/content/slide-3.jpg" alt="Mobile Application" />
           <div class="card-text">
             <p>Mobile Application</p>
             <span>Branding & Design</span>
           </div>
         </div>
         <div class="card">
-          <img src="@/assets/content/slide-4.png" alt="Slide-4" />
+          <img src="@/assets/content/slide-4.jpg" alt="Web Application" />
           <div class="card-text">
             <p>Web Application</p>
             <span>Branding & Design</span>
