@@ -8,8 +8,8 @@
 </template>
 <script>
 export default {
-  name: 'Banner'
-}
+  name: 'Banner',
+};
 </script>
 <style scoped>
 .wrapper {

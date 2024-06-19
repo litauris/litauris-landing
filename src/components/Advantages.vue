@@ -19,8 +19,8 @@
 </template>
 <script>
 export default {
-  name: 'Advantages'
-}
+  name: 'Advantages',
+};
 </script>
 <style scoped>
 section {
