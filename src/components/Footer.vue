@@ -1,8 +1,8 @@
 <template>
   <section>
     <div class="row wrapper">
-      <p>What are you waiting for?</p>
-      <h2>Get a stunning mobile app designed and online<span> within the next 10 days</span></h2>
+      <h2>What are you waiting for?</h2>
+      <h3>Get a stunning mobile app designed and online<span> within the next 10 days</span></h3>
       <button>
         <span>Get an instant quote</span>
       </button>
@@ -21,17 +21,18 @@ section {
 .wrapper {
   display: flex;
   flex-direction: column;
-  margin-inline: auto;
-  max-width: var(--max-content-width);
-  width: 100%;
   padding-block: 100px;
 }
 h2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+h3 {
   font-size: 60px;
   font-weight: 500;
   width: 600px;
 }
-h2 span {
+h3 span {
   color: #bab9be;
 }
 button {

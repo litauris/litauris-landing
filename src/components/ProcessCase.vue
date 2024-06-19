@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="row wrapper">
-      <p>Process with Us</p>
+      <h2>Process with Us</h2>
       <div>
         <div class="line">
           <span>A</span>
@@ -65,6 +65,10 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-block: 100px;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 400;
 }
 .line {
   border-bottom: 1px solid #222528cc;

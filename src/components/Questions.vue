@@ -2,7 +2,7 @@
   <section>
     <div class="row wrapper">
       <div>
-        <p>FAQ</p>
+        <h2>FAQ</h2>
         <img src="@/assets/content/square-dark.svg" alt="square" />
       </div>
       <div class="accordion"></div>
@@ -24,5 +24,9 @@ section {
   grid-template-columns: 1fr 1fr;
 
   padding-block: 100px;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 400;
 }
 </style>

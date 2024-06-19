@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="row wrapper">
-      <p>Services</p>
+      <h2>Services</h2>
       <div class="services">
         <div class="line">
           <h3>Mobile App</h3>
@@ -59,6 +59,10 @@ export default {
 
   gap: 100px;
   padding-block: 100px;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 400;
 }
 .line {
   align-items: center;

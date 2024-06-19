@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="row wrapper">
-      <p>Portfolio</p>
+      <h2>Portfolio</h2>
       <h3>
         We are a creative agency working with brands – building insightful strategy, creating unique
         designs and crafting experiences that bring positive change and value.
@@ -51,6 +51,10 @@ export default {
 .wrapper {
   display: flex;
   flex-direction: column;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 400;
 }
 h3 {
   font-weight: 500;

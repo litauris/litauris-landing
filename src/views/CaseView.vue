@@ -3,7 +3,6 @@
     <HeroBannerCase />
     <BannerCase />
     <AboutCase />
-    <h1>This is a Case page</h1>
     <ProcessCase />
   </main>
 </template>

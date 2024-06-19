@@ -1,17 +1,17 @@
 <template>
   <section>
     <div class="row wrapper">
-      <p>Advantages</p>
+      <h2>Advantages</h2>
       <div class="advantages">
         <p>
           Thanks to the No Code approach, there is no need to attract highly qualified development
           teams, which reduces costs.
         </p>
         <div class="slider">
-          <h2>
+          <h3>
             Ease Support.
             <span>It’s no need to attract highly qualified development.</span>
-          </h2>
+          </h3>
         </div>
       </div>
     </div>
@@ -32,16 +32,20 @@ section {
   padding-block: 100px;
   color: var(--text-color-light);
 }
+h2 {
+  font-size: 1rem;
+  font-weight: 400;
+}
 .advantages {
   display: flex;
   flex-direction: column;
   gap: 200px;
 }
-h2 {
+h3 {
   font-size: 50px;
   font-weight: 500;
 }
-h2 span {
+h3 span {
   color: var(--text-color-soft);
 }
 </style>

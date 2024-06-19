@@ -43,7 +43,7 @@ export default {
 .contact button {
   background-color: #f4f4f5;
   border: none;
-  border-radius: 60px;
+  border-radius: 24px;
   color: #202020;
   padding: 8px 20px;
 }

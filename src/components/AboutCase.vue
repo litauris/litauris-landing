@@ -62,6 +62,9 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+.about h2 {
+  font-size: 30px;
+}
 .about h3 {
   font-family: var(--font-secondary);
   font-weight: 400;
