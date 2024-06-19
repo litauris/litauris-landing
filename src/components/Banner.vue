@@ -22,11 +22,30 @@ export default {
   width: 100%;
 }
 h2 {
-  color: var(--heading-color-light);
-  font-size: 60px;
-  font-weight: 500;
-  position: absolute;
-  width: 500px;
-  text-align: center;
+  display: none;
+}
+@media (width < 1024px) {
+  section {
+    height: 340px;
+  }
+  .wrapper {
+    height: 100%;
+  }
+  .wrapper img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (width >= 1024px) {
+  .wrapper h2 {
+    color: var(--heading-color-light);
+    display: block;
+    font-size: 60px;
+    font-weight: 500;
+    position: absolute;
+    text-align: center;
+    width: 500px;
+  }
 }
 </style>

@@ -19,4 +19,16 @@ export default {
 .wrapper img {
   width: 100%;
 }
+@media (width < 1024px) {
+  section {
+    height: 50vh;
+  }
+  .wrapper {
+    height: 100%;
+  }
+  .wrapper img {
+    object-fit: cover;
+    height: 100%;
+  }
+}
 </style>

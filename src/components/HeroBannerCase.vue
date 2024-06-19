@@ -49,11 +49,12 @@ h2 {
   letter-spacing: -1px;
   line-height: 22px;
 }
-/* @media (width < 1024px) {
-  h2 {
-    max-width: 320px;
+
+@media (width < 1024px) {
+  section {
+    height: calc(50vh - 81px);
   }
-} */
+}
 @media (width >= 1024px) {
   /* comp */
   .wrapper {

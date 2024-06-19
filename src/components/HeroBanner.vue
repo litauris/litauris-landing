@@ -61,6 +61,11 @@ h2 span {
   line-height: 22px;
   width: 400px;
 }
+@media (width < 1024px) {
+  section {
+    height: calc(100vh - 81px);
+  }
+}
 
 @media (width >= 1024px) {
   h2 {

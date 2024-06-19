@@ -2,7 +2,7 @@
   <header>
     <div class="row wrapper">
       <div class="logo">
-        <img src="@/assets/logo.svg" alt="Litauris" width="40" />
+        <img src="@/assets/logo.svg" alt="Litauris" width="40" height="40" />
         <span>Litauris</span>
       </div>
 
