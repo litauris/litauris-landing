@@ -11,8 +11,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@unhead/vue": "^1.9.13",
     "vue": "^3.4.21",
-    "vue-meta": "^3.0.0-alpha",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
