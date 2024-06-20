@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="advantages">
     <div class="row wrapper">
       <h2>Advantages</h2>
       <div class="advantages">

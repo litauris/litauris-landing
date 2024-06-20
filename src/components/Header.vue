@@ -18,8 +18,8 @@
 
         <div class="menu-wrapper">
           <!-- @TODO: Mobile -->
-          <a href="#" v-if="!isCasePage">Advantages</a>
-          <a href="#" v-if="!isCasePage">Services</a>
+          <a href="#advantages" v-if="!isCasePage">Advantages</a>
+          <a href="#services" v-if="!isCasePage">Services</a>
           <a class="outline" href="https://calendly.com/ceo-glu6">
             {{ isCasePage ? 'Book a Call' : `Let's talk` }}
           </a>
