@@ -20,7 +20,7 @@
           <!-- @TODO: Mobile -->
           <a href="#advantages" v-if="!isCasePage">Advantages</a>
           <a href="#services" v-if="!isCasePage">Services</a>
-          <a class="outline" href="https://calendly.com/ceo-glu6">
+          <a class="calendly" href="https://calendly.com/ceo-glu6">
             {{ isCasePage ? 'Book a Call' : `Let's talk` }}
           </a>
         </div>
@@ -78,5 +78,10 @@ header {
   align-items: center;
   column-gap: 2rem;
   display: flex;
+}
+.calendly {
+  background-color: #bbbcbd;
+  border-radius: 24px;
+  padding: 8px 20px;
 }
 </style>
