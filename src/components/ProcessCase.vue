@@ -67,7 +67,7 @@ section {
   padding-block: 100px;
 }
 h2 {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 400;
 }
 .line {

@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="about">
-        <h2>About the project</h2>
+        <h2>About the&nbsp;project</h2>
         <div>
           <h3>Challenge:</h3>
           <p>
@@ -39,6 +39,7 @@ export default {
 <style scoped>
 section {
   background-color: var(--background-color-dark);
+  font-family: var(--font-secondary);
 }
 .wrapper {
   display: flex;
@@ -48,30 +49,78 @@ section {
   color: var(--text-color-light);
 }
 .keys-wrapper {
-  align-items: center;
-  border-bottom: 1px solid #222528;
-  display: grid;
-  padding-bottom: 60px;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
+
 .keys {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 16px;
 }
 .about {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
 }
 .about h2 {
-  font-size: 30px;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 25px;
 }
 .about h3 {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 16px;
+  line-height: 25px;
 }
 .about p {
-  font-size: 28px;
+  font-size: 20px;
+  line-height: 26px;
   padding-block: 20px;
+  letter-spacing: -1px;
+}
+
+@media (width < 1024px) {
+  .keys-wrapper p {
+    border-bottom: 1px solid #222528;
+    padding-block: 16px;
+    line-height: 22px;
+    letter-spacing: -1px;
+  }
+  h2 {
+    margin-bottom: 28px;
+  }
+}
+
+@media (width >= 1024px) {
+  .keys-wrapper {
+    align-items: center;
+    border-bottom: 1px solid #222528;
+    display: grid;
+    padding-bottom: 60px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .keys {
+    flex-direction: row;
+  }
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .about h2 {
+    max-width: 370px;
+    font-size: 50px;
+    line-height: 60px;
+  }
+  .about h3 {
+    font-size: 22px;
+    line-height: 25px;
+  }
+  .about p {
+    font-size: 28px;
+    line-height: 36px;
+  }
 }
 </style>

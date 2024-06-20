@@ -27,13 +27,16 @@ section {
   background-color: var(--background-color-dark);
 }
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
   padding-block: 100px;
   color: var(--text-color-light);
 }
-h2 {
-  font-size: 1rem;
+.wrapper h2 {
+  font-family: var(--font-secondary);
+  font-size: 16px;
   font-weight: 400;
 }
 .advantages {
@@ -41,11 +44,32 @@ h2 {
   flex-direction: column;
   gap: 200px;
 }
-h3 {
-  font-size: 50px;
+.advantages p {
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  line-height: 25px;
+}
+.slider h3 {
+  font-size: 40px;
   font-weight: 500;
 }
-h3 span {
+.slider h3 span {
   color: var(--text-color-soft);
+}
+
+@media (width >= 1024px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .wrapper h2 {
+    font-size: 20px;
+  }
+  .advantages p {
+    font-size: 22px;
+  }
+  .slider h2 {
+    font-size: 50px;
+  }
 }
 </style>

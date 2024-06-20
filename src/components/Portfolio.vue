@@ -53,7 +53,7 @@ export default {
   flex-direction: column;
 }
 h2 {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 400;
 }
 h3 {

@@ -24,13 +24,16 @@ section {
   padding-block: 100px;
 }
 h2 {
-  font-size: 1rem;
-  font-weight: 400;
+  letter-spacing: -1px;
+  color: #777777;
+  font-size: 16px;
+  font-weight: 500;
 }
 h3 {
-  font-size: 60px;
+  letter-spacing: -2px;
   font-weight: 500;
-  width: 600px;
+  font-size: 35px;
+  width: 320px;
 }
 h3 span {
   color: #bab9be;
@@ -38,15 +41,37 @@ h3 span {
 button {
   background-color: #1a4dd1;
   border: none;
-  border-radius: 60px;
-  width: 120px;
-  height: 120px;
-  position: relative;
 }
 button span {
   color: var(--heading-color-light);
-  position: absolute;
-  top: 16px;
-  right: 30px;
+}
+@media (width < 1024px) {
+  .wrapper {
+    gap: 30px;
+  }
+  button {
+    padding: 10px;
+    border-radius: 60px;
+  }
+}
+@media (width >= 1024px) {
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 60px;
+    width: 600px;
+  }
+  button {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    position: relative;
+  }
+  button span {
+    position: absolute;
+    top: 16px;
+    right: 30px;
+  }
 }
 </style>
