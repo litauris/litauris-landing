@@ -3,15 +3,15 @@
     <div class="row wrapper">
       <div class="contact">
         <a href="#">Write to Us</a>
-        <a href="#">
+        <a href="mailto:hello@litauris.com">
           <span>Hello@Litauris.com</span>
           <img src="@/assets/icons/arrow-right.svg" alt="Arrow" />
         </a>
-        <button>Back to Top</button>
+        <button @click="scrollToTop">Back to Top</button>
       </div>
       <div class="copyright">
         <p>If we don't respond in a second, we'll respond within an hour</p>
-        <p>&#169; 2024</p>
+        <p>&#169; {{ currentYear }}</p>
       </div>
     </div>
   </section>
@@ -19,6 +19,16 @@
 <script>
 export default {
   name: 'Copyright',
+  data() {
+    return {
+      currentYear: new Date().getFullYear(),
+    };
+  },
+  methods: {
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+  },
 };
 </script>
 <style scoped>
