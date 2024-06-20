@@ -1,6 +1,6 @@
 <template>
-  <Header />
-  <RouterView />
+  <Header class="header" />
+  <RouterView class="main" />
   <Footer />
   <Copyright />
 </template>
@@ -18,3 +18,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.header {
+  inset-inline: 0;
+  position: fixed;
+  top: 0;
+}
+.main {
+  margin-top: 81px;
+}
+</style>
