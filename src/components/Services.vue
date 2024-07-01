@@ -3,57 +3,70 @@
     <div class="row wrapper">
       <h2>Services</h2>
       <div class="services">
-        <div class="line">
-          <h3>Mobile App</h3>
-          <div class="colomn">
-            <p>
-              We design and develop exceptional digital products & services, eCommerce, and brand
-              communication solutions.
-            </p>
-            <button><img src="@/assets/icons/arrow-left-down.svg" alt="arrow" /></button>
+        <div
+          class="line"
+          :class="{ active: service.visible }"
+          v-for="(service, index) in services"
+          :key="service.title"
+        >
+          <h3 @click="toggleVisibility(index)">{{ service.title }}</h3>
+          <div class="column">
+            <p>{{ service.content }}</p>
+            <button @click="toggleVisibility(index)">
+              <img src="@/assets/icons/arrow-left-down.svg" alt="arrow" />
+            </button>
           </div>
-          <img class="service-img" src="@/assets/content/service-1.jpg" alt="Mobile App" />
-        </div>
-        <div class="line">
-          <h3>Web App</h3>
-          <div class="colomn">
-            <p>
-              We design and develop exceptional digital products & services, eCommerce, and brand
-              communication solutions.
-            </p>
-            <button><img src="@/assets/icons/arrow-left-down.svg" alt="arrow" /></button>
+          <div class="service-img-wrapper">
+            <img class="service-img" :src="service.src" alt="Mobile App" />
           </div>
-          <img class="service-img" src="@/assets/content/service-2.jpg" alt="Web App" />
-        </div>
-        <div class="line">
-          <h3>Admin Panel</h3>
-          <div class="colomn">
-            <p>
-              We design and develop exceptional digital products & services, eCommerce, and brand
-              communication solutions.
-            </p>
-            <button><img src="@/assets/icons/arrow-left-down.svg" alt="arrow" /></button>
-          </div>
-          <img class="service-img" src="@/assets/content/service-3.jpg" alt="Admin Panel" />
-        </div>
-        <div class="line">
-          <h3>Backend</h3>
-          <div class="colomn">
-            <p>
-              We design and develop exceptional digital products & services, eCommerce, and brand
-              communication solutions.
-            </p>
-            <button><img src="@/assets/icons/arrow-left-down.svg" alt="arrow" /></button>
-          </div>
-          <img class="service-img" src="@/assets/content/service-4.jpg" alt="Backend" />
         </div>
       </div>
     </div>
   </section>
 </template>
 <script>
+import mobileAppImage from '@/assets/content/service-1.jpg';
+import webAppImage from '@/assets/content/service-2.jpg';
+import adminPanelImage from '@/assets/content/service-3.jpg';
+import backendImage from '@/assets/content/service-4.jpg';
+
 export default {
   name: 'Services',
+  data() {
+    return {
+      services: [
+        {
+          title: 'Mobile App',
+          content:
+            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+          src: mobileAppImage,
+        },
+        {
+          title: 'Web App',
+          content:
+            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+          src: webAppImage,
+        },
+        {
+          title: 'Admin Panel',
+          content:
+            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+          src: adminPanelImage,
+        },
+        {
+          title: 'Backend',
+          content:
+            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+          src: backendImage,
+        },
+      ],
+    };
+  },
+  methods: {
+    toggleVisibility(index) {
+      this.services[index].visible = !this.services[index].visible;
+    },
+  },
 };
 </script>
 <style scoped>
@@ -76,11 +89,8 @@ h2 {
 .line:last-child {
   border: none;
 }
-.line .service-img {
-  display: none;
-}
-.line:hover .service-img {
-  display: block;
+.service-img {
+  width: 100%;
 }
 
 h3 {
@@ -88,45 +98,56 @@ h3 {
   color: #524f4f;
   transition: color 0.3s ease-in-out;
 }
-.line:hover h3 {
-  color: #131313;
-}
-.colomn {
+.column {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
 }
-.colomn p {
+.column p {
   color: #62646e;
   transition: color 0.3s ease-in-out;
 }
-.line:hover .colomn p {
-  color: #131313;
-}
-.colomn button {
+.column button {
   border: none;
   width: 30px;
   height: 30px;
   border-radius: 60px;
 }
-.colomn button img {
+.column button img {
   transition: all 0.1s linear;
 }
-.line:hover .colomn button img {
-  transform: rotate(90deg);
-}
 @media (width < 1024px) {
-  .service-img {
-    width: 100%;
-  }
-  .colomn {
+  .column {
+    margin-block: 16px;
     position: relative;
   }
-  .colomn button {
+  .column button {
     position: absolute;
     right: 0;
-    bottom: 100%;
+    bottom: calc(100% + 16px);
+  }
+  .service-img-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.3s ease-in-out;
+  }
+  .service-img {
+    overflow: hidden;
+  }
+
+  .line.active h3 {
+    color: #131313;
+  }
+  .line.active .column p {
+    color: #131313;
+  }
+  .line.active .service-img-wrapper {
+    grid-template-rows: 1fr;
+  }
+  .line.active .column button img {
+    transform: rotate(90deg);
   }
 }
 @media (width >= 1024px) {
@@ -139,7 +160,7 @@ h3 {
     display: flex;
     justify-content: space-between;
   }
-  .line .service-img {
+  .line .service-img-wrapper {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -148,11 +169,27 @@ h3 {
     height: 200px;
     z-index: 1;
   }
+
+  .line:hover h3 {
+    color: #131313;
+  }
+  .line:hover .column p {
+    color: #131313;
+  }
+  .line .service-img {
+    display: none;
+  }
+  .line:hover .service-img {
+    display: block;
+  }
+  .line:hover .column button img {
+    transform: rotate(90deg);
+  }
   h3 {
     font-size: 30px;
     color: #bebfc4;
   }
-  .colomn p {
+  .column p {
     max-width: 330px;
   }
 }
