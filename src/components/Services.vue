@@ -125,7 +125,7 @@ h3 {
   .column button {
     position: absolute;
     right: 0;
-    bottom: calc(100% + 16px);
+    bottom: calc(100% + 20px);
   }
   .service-img-wrapper {
     display: grid;

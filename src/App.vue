@@ -24,6 +24,7 @@ export default {
   inset-inline: 0;
   position: fixed;
   top: 0;
+  z-index: 1;
 }
 .main {
   margin-top: 81px;

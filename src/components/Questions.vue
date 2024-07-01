@@ -9,13 +9,15 @@
           :key="question.title"
           :value="String(index)"
         >
-          <AccordionHeader class="accordion-header">
-            <span class="title">{{ question.title }}</span>
+          <AccordionHeader>
+            <span class="accordion-header-title">{{ question.title }}</span>
             <template v-slot:toggleicon="{ active }">
-              <span class="icon" :class="{ active: active }">{{ active ? '–' : '+' }}</span>
+              <span class="accordion-header-icon" :class="{ active: active }">{{
+                active ? '–' : '+'
+              }}</span>
             </template>
           </AccordionHeader>
-          <AccordionContent class="accordion-content">
+          <AccordionContent>
             <p>{{ question.content }}</p>
           </AccordionContent>
         </AccordionPanel>
@@ -83,50 +85,44 @@ h2 {
   font-size: 16px;
   font-weight: 400;
 }
-.accordion-panel {
-  border-top: 1px solid #222528;
+.accordion {
+  --p-accordion-panel-border-color: #222528;
+  --p-accordion-panel-border-width: 1px 0 0 0;
+
+  --p-accordion-header-background: none;
+  --p-accordion-header-color: var(--text-color-light);
+  --p-accordion-header-hover-background: none;
+  --p-accordion-header-hover-color: var(--text-color-light);
+  --p-accordion-header-active-background: none;
+  --p-accordion-header-active-color: var(--text-color-light);
+  --p-accordion-header-active-hover-background: none;
+  --p-accordion-header-active-hover-color: var(--text-color-light);
+  --p-accordion-header-padding: 16px 0;
+
+  --p-accordion-content-padding: 0 0 16px;
+  --p-accordion-content-color: var(--text-color-light);
 }
-.accordion-header {
-  align-items: center;
-  background: none;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  padding-block: 16px;
-  width: 100%;
+.accordion-panel:first-of-type {
+  --p-accordion-panel-border-width: 0;
 }
-.title {
+.accordion-header-title {
   font-size: 24px;
   font-weight: 500;
-  text-align: left;
 }
-.icon {
+.accordion-header-icon {
   background-color: #28292d;
   border-radius: 50%;
   color: #dfd5d5;
   font-weight: 500;
   line-height: 28px;
   height: 30px;
+  text-align: center;
   transition: background-color 0.3s ease-in-out;
   width: 30px;
 }
-.icon.active {
+.accordion-header-icon.active {
   background-color: #dfd5d5;
   color: #28292d;
-}
-.accordion-content {
-  color: var(--text-color-soft);
-  display: grid !important;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  transition: grid-template-rows 0.3s ease-in-out;
-}
-.accordion-content::v-deep [data-pc-section='content'] {
-  overflow: hidden;
-}
-.accordion-content[data-p-active='true'] {
-  grid-template-rows: 1fr;
-  padding-bottom: 16px;
 }
 img {
   max-width: 100%;
@@ -154,10 +150,7 @@ img {
   .accordion {
     grid-area: b;
   }
-  .accordion-panel:first-of-type {
-    border-top: none;
-  }
-  .title {
+  .accordion-header-title {
     font-size: 28px;
   }
   img {

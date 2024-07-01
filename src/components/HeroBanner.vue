@@ -59,7 +59,7 @@ h2 span {
   font-family: var(--font-secondary);
   font-size: 18px;
   line-height: 22px;
-  width: 400px;
+  max-width: 400px;
 }
 @media (width < 1024px) {
   section {
