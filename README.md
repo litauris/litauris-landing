@@ -33,3 +33,23 @@ npm run build
 ```sh
 npm run lint
 ```
+
+---
+
+## deploy.yml
+
+"Build and Deploy" job requires [Repository secrets](https://github.com/litauris/litauris-landing/settings/secrets/actions):
+
+- **SSH_PRIVATE_KEY** - private SSH key generated specifically for action server (id_ed25519 is preferable)
+
+- **SSH_HOST_KEY** - target server public SSH key, that will be added to known hosts on action server:
+
+```bash
+ssh-keyscan yourhosting.com # use host from your SSH command
+```
+
+Search for line with `ssh-rsa`
+
+- **RSYNC_TARGET** - user, host and path to deploy folder on target server
+
+Example: `user@yourserver.com:/path/to/deploy`
