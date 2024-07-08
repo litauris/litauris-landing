@@ -40,7 +40,7 @@ npm run lint
 
 "Build and Deploy" job requires [Repository secrets](https://github.com/litauris/litauris-landing/settings/secrets/actions):
 
-- **SSH_PRIVATE_KEY** - private SSH key generated specifically for action server (id_ed25519 is preferable)
+- **SSH_PRIVATE_KEY** - private SSH key generated specifically for action server (e.g. id_ed25519)
 
 - **SSH_HOST_KEY** - target server public SSH key, that will be added to known hosts on action server:
 
