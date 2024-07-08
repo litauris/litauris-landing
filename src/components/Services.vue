@@ -8,11 +8,12 @@
           :class="{ active: service.visible }"
           v-for="(service, index) in services"
           :key="service.title"
+          @click="toggleVisibility(index)"
         >
-          <h3 @click="toggleVisibility(index)">{{ service.title }}</h3>
+          <h3>{{ service.title }}</h3>
           <div class="column">
             <p>{{ service.content }}</p>
-            <button @click="toggleVisibility(index)">
+            <button>
               <img src="@/assets/icons/arrow-left-down.svg" alt="arrow" />
             </button>
           </div>
