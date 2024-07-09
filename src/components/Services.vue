@@ -1,5 +1,6 @@
 <template>
-  <section id="services">
+  <section>
+    <a class="anchor" id="services" />
     <div class="row wrapper">
       <h2>Services</h2>
       <div class="services">

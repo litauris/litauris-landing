@@ -1,5 +1,6 @@
 <template>
-  <section id="advantages">
+  <section>
+    <a class="anchor" id="advantages" />
     <div class="row wrapper">
       <h2>Advantages</h2>
       <div class="advantages">
