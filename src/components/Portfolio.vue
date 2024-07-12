@@ -6,36 +6,14 @@
         We are a creative agency working with brands – building insightful strategy, creating unique
         designs and crafting experiences that bring positive change and value.
       </h3>
-      <div class="slider">
-        <div class="card">
-          <img src="@/assets/content/slide-1.jpg" alt="Mobile Application" />
-          <div class="card-text">
-            <p>Mobile Application</p>
-            <span
-              >Brand Strategy & Voice, Branding & Design, Digital & Web Content & Campaigns, Events
-              & Activations</span
-            >
-          </div>
-        </div>
-        <div class="card">
-          <img src="@/assets/content/slide-2.jpg" alt="Admin Panel" />
-          <div class="card-text">
-            <p>Admin Panel</p>
-            <span>Branding & Design</span>
-          </div>
-        </div>
-        <div class="card">
-          <img src="@/assets/content/slide-3.jpg" alt="Mobile Application" />
-          <div class="card-text">
-            <p>Mobile Application</p>
-            <span>Branding & Design</span>
-          </div>
-        </div>
-        <div class="card">
-          <img src="@/assets/content/slide-4.jpg" alt="Web Application" />
-          <div class="card-text">
-            <p>Web Application</p>
-            <span>Branding & Design</span>
+      <div ref="sliderWrapper">
+        <div class="slider" ref="slider">
+          <div class="card" v-for="card in cards" :key="card.title">
+            <img :src="card.src" :alt="card.title" />
+            <div class="card-text">
+              <p>{{ card.title }}</p>
+              <span>{{ card.subtitle }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -43,33 +21,112 @@
   </section>
 </template>
 <script>
+import mobileAppImage from '@/assets/content/slide-1.jpg';
+import adminPanelImage from '@/assets/content/slide-2.jpg';
+import mobileApp2Image from '@/assets/content/slide-3.jpg';
+import webAppImage from '@/assets/content/slide-4.jpg';
+
 export default {
   name: 'Portfolio',
+  data() {
+    return {
+      cards: [
+        {
+          title: 'Mobile Application',
+          subtitle:
+            'Brand Strategy & Voice, Branding & Design, Digital & Web Content & Campaigns, Events & Activations',
+          src: mobileAppImage,
+        },
+        {
+          title: 'Admin Panel',
+          subtitle: 'Branding & Design',
+          src: adminPanelImage,
+        },
+        {
+          title: 'Mobile Application',
+          subtitle: 'Branding & Design',
+          src: mobileApp2Image,
+        },
+        {
+          title: 'Web Application',
+          subtitle: 'Branding & Design',
+          src: webAppImage,
+        },
+      ],
+      sliderScrollPosition: 0,
+    };
+  },
+  methods: {
+    moveSlider(event) {
+      const slider = this.$refs.slider;
+      const maxScrollLeft = slider.scrollWidth - slider.offsetWidth;
+
+      let scrollLeft = -this.sliderScrollPosition + event.deltaY;
+
+      if (scrollLeft > 0 && scrollLeft < maxScrollLeft) {
+        event.preventDefault();
+      }
+      if (scrollLeft <= 0) {
+        scrollLeft = 0;
+      }
+      if (scrollLeft >= maxScrollLeft) {
+        scrollLeft = maxScrollLeft;
+      }
+
+      slider.style.left = -scrollLeft + 'px';
+      this.sliderScrollPosition = -scrollLeft;
+    },
+  },
+  mounted() {
+    const sliderWrapper = this.$refs.sliderWrapper;
+    const options = {
+      threshold: 0.9,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          sliderWrapper.addEventListener('wheel', this.moveSlider);
+        } else {
+          sliderWrapper.removeEventListener('wheel', this.moveSlider);
+        }
+      });
+    }, options);
+
+    observer.observe(sliderWrapper);
+  },
 };
 </script>
 <style scoped>
+section {
+  overflow: hidden;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
 }
+
 h2 {
   font-size: 16px;
   font-weight: 400;
 }
 h3 {
-  font-weight: 500;
   font-size: 24px;
+  font-weight: 500;
+  max-width: 700px;
   padding-block: 70px;
-  width: 700px;
 }
+
 .slider {
   display: flex;
-
   gap: 36px;
+  left: 0;
 }
 .card img {
-  height: 612px;
-  width: 680px;
+  aspect-ratio: 10 / 8;
+  object-fit: cover;
+  width: 100%;
 }
 .card-text {
   display: flex;
@@ -87,5 +144,21 @@ h3 {
   font-size: 20px;
   font-weight: 400;
   text-align: left;
+}
+
+@media (width < 1024px) {
+  .slider {
+    flex-direction: column;
+  }
+}
+
+@media (width >= 1024px) {
+  .slider {
+    position: relative;
+  }
+  .card {
+    flex-basis: calc(50% - 18px);
+    flex-shrink: 0;
+  }
 }
 </style>
