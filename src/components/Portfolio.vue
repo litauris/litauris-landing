@@ -21,6 +21,9 @@
   </section>
 </template>
 <script>
+import { enableScrollLock, disableScrollLock } from '@/helpers/scroll-lock.js';
+import { throttle } from '@/helpers/throttle.js';
+
 import mobileAppImage from '@/assets/content/slide-1.jpg';
 import adminPanelImage from '@/assets/content/slide-2.jpg';
 import mobileApp2Image from '@/assets/content/slide-3.jpg';
@@ -53,18 +56,24 @@ export default {
           src: webAppImage,
         },
       ],
+      isSliderVisible: false,
+      observer: null,
       sliderScrollPosition: 0,
+      wheelHandler: null,
     };
   },
   methods: {
-    moveSlider(event) {
+    handleSlider(event) {
+      if (!this.isSliderVisible) return;
+
       const slider = this.$refs.slider;
       const maxScrollLeft = slider.scrollWidth - slider.offsetWidth;
 
       let scrollLeft = -this.sliderScrollPosition + event.deltaY;
 
-      if (scrollLeft > 0 && scrollLeft < maxScrollLeft) {
-        event.preventDefault();
+      if (scrollLeft <= 0 || scrollLeft >= maxScrollLeft) {
+        disableScrollLock();
+        this.isSliderVisible = false;
       }
       if (scrollLeft <= 0) {
         scrollLeft = 0;
@@ -76,24 +85,47 @@ export default {
       slider.style.left = -scrollLeft + 'px';
       this.sliderScrollPosition = -scrollLeft;
     },
+    initSlider() {
+      if (window.innerWidth < 1024) {
+        this.observer && this.observer.disconnect();
+        document.removeEventListener('wheel', this.wheelHandler);
+
+        return;
+      }
+
+      const sliderWrapper = this.$refs.sliderWrapper;
+      const options = {
+        threshold: 0.9,
+      };
+
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.isSliderVisible = true;
+
+            const marginTop =
+              window.scrollY +
+              entry.boundingClientRect.top -
+              (window.innerHeight / 2 - sliderWrapper.offsetHeight / 2);
+
+            enableScrollLock(marginTop);
+          } else {
+            this.isSliderVisible = false;
+          }
+        });
+      }, options);
+
+      this.observer.observe(sliderWrapper);
+
+      document.addEventListener('wheel', this.wheelHandler);
+    },
   },
   mounted() {
-    const sliderWrapper = this.$refs.sliderWrapper;
-    const options = {
-      threshold: 0.9,
-    };
+    this.wheelHandler = throttle(this.handleSlider, 10);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          sliderWrapper.addEventListener('wheel', this.moveSlider);
-        } else {
-          sliderWrapper.removeEventListener('wheel', this.moveSlider);
-        }
-      });
-    }, options);
+    this.initSlider();
 
-    observer.observe(sliderWrapper);
+    window.screen.orientation.addEventListener('change', this.initSlider);
   },
 };
 </script>
@@ -121,7 +153,6 @@ h3 {
 .slider {
   display: flex;
   gap: 36px;
-  left: 0;
 }
 .card img {
   aspect-ratio: 10 / 8;
@@ -154,7 +185,9 @@ h3 {
 
 @media (width >= 1024px) {
   .slider {
+    left: 0;
     position: relative;
+    transition: left 0.1s;
   }
   .card {
     flex-basis: calc(50% - 18px);
