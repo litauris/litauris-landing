@@ -17,11 +17,11 @@ import ContentCase from '../components/ContentCase.vue';
 export default {
   name: 'CaseView',
   components: {
-    ProcessCase,
     HeroBannerCase,
     BannerCase,
     AboutCase,
     ContentCase,
+    ProcessCase,
   },
   head: {
     title: 'Case Study | Lowcode Agency',
