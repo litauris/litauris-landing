@@ -162,19 +162,18 @@ h3 {
 .card-text {
   display: flex;
   flex-direction: column;
-  padding-block: 30px;
+  padding-block: 16px;
   gap: 8px;
 }
 .card-text p {
   color: #0a0a0a;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 22px;
 }
 .card-text span {
   color: #b1b1b6;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
-  text-align: left;
 }
 
 @media (width < 1024px) {
@@ -192,6 +191,15 @@ h3 {
   .card {
     flex-basis: calc(50% - 18px);
     flex-shrink: 0;
+  }
+  .card-text {
+    padding-block: 30px;
+  }
+  .card-text p {
+    font-size: 30px;
+  }
+  .card-text span {
+    font-size: 20px;
   }
 }
 </style>

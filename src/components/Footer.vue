@@ -99,7 +99,7 @@ button span {
 .p-dialog .p-dialog-header {
   justify-content: flex-end;
 }
-.p-dialog .p-button {
+.p-dialog .p-dialog-close-button {
   --p-button-text-secondary-active-background: none;
   --p-button-text-secondary-hover-background: none;
 }
@@ -109,13 +109,13 @@ button span {
     height: 100%;
     --p-dialog-border-radius: 0;
   }
-  button.p-button {
+  .p-dialog .p-dialog-close-button {
     margin-top: 12px;
     margin-right: 20px;
     font-weight: 400;
     --p-button-text-secondary-color: initial;
   }
-  svg.p-icon {
+  .p-dialog .p-dialog-close-button .p-button-icon {
     height: 24px;
     width: 24px;
   }
