@@ -8,7 +8,7 @@
       </button>
     </div>
     <Dialog v-model:visible="visible" modal>
-      <ContactUsForm />
+      <ContactUsForm @submitted="visible = false" />
     </Dialog>
   </footer>
 </template>

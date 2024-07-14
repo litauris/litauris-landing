@@ -23,7 +23,9 @@ jobs:
         run: npm run build
 
       - name: Move services to dist
-        run: cp services/contact-us.html dist/contact-us
+        run: |
+          cp services/contact-us.html dist/contact-us
+          cp services/sendmail.php dist/sendmail.php
 
       - name: Set up SSH
         env:

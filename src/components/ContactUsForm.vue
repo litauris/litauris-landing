@@ -1,24 +1,22 @@
 <template>
   <section>
     <div class="wrapper row">
-      <div>
-        <h2>Have a project in mind?</h2>
-      </div>
-      <form class="form">
+      <h2>Have a project in mind?</h2>
+      <form class="form" ref="form" novalidate @submit.prevent="submit">
         <FloatLabel>
-          <InputText id="name" :invalid="name === null" v-model="name" />
+          <InputText id="name" name="name" v-model="name" :invalid="v$.name.$error" />
           <label for="name">Your name</label>
         </FloatLabel>
         <FloatLabel>
-          <InputText id="email" v-model="email" />
+          <InputText id="email" name="email" v-model="email" :invalid="v$.email.$error" />
           <label for="email">Email</label>
         </FloatLabel>
         <FloatLabel>
-          <Textarea id="idea" v-model="description" rows="3" />
-          <label for="idea">Describe your project <span class="idea">(optional)</span></label>
+          <Textarea id="message" name="message" v-model="message" rows="3" />
+          <label for="message">Describe your project <span class="idea">(optional)</span></label>
         </FloatLabel>
         <FileUpload
-          name="demo[]"
+          name="file"
           :maxFileSize="4194304"
           :auto="true"
           :showUploadButton="false"
@@ -30,9 +28,10 @@
         </FileUpload>
 
         <p>By clicking the Submit button you agree to our <span>Privacy Policy</span> terms</p>
-        <button type="submit"><span>Submit</span></button>
+        <button type="submit" :disabled="isLoading"><span>Submit</span></button>
       </form>
     </div>
+    <Toast position="top-center" />
   </section>
 </template>
 <script>
@@ -40,21 +39,89 @@ import InputText from 'primevue/inputtext';
 import FloatLabel from 'primevue/floatlabel';
 import Textarea from 'primevue/textarea';
 import FileUpload from 'primevue/fileupload';
+import Toast from 'primevue/toast';
+import { useVuelidate } from '@vuelidate/core';
+import { required, email } from '@vuelidate/validators';
+import { useToast } from 'primevue/usetoast';
 
 export default {
   name: 'ContactUsForm',
+  emits: ['submitted'],
   components: {
     InputText,
     FloatLabel,
     Textarea,
     FileUpload,
+    Toast,
   },
   data() {
     return {
       name: '',
       email: '',
-      description: '',
+      message: '',
+      isLoading: false,
     };
+  },
+  setup() {
+    return {
+      v$: useVuelidate(),
+      toast$: useToast(),
+    };
+  },
+  methods: {
+    submit() {
+      this.v$.$touch();
+
+      if (this.v$.$error) return;
+
+      this.isLoading = true;
+
+      const formData = new FormData(this.$refs.form);
+
+      fetch('/sendmail.php', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => {
+          if (response.ok) {
+            this.toast$.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Your message sent',
+              life: 3000,
+            });
+
+            this.$emit('submitted');
+          } else {
+            this.showErrorMessage();
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+
+          this.showErrorMessage();
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
+    showErrorMessage() {
+      this.toast$.add({
+        severity: 'error',
+        summary: 'Error occurred',
+        detail: 'Please, try again later',
+        life: 3000,
+      });
+    },
+  },
+  validations: {
+    name: {
+      required,
+    },
+    email: {
+      required,
+      email,
+    },
   },
 };
 </script>
@@ -88,6 +155,9 @@ h2 {
   --p-inputtext-focus-border-color: #e3e3e4;
   --p-inputtext-border-radius: 0;
   --p-inputtext-shadow: none;
+}
+.form input.p-invalid {
+  border-color: #ff0000;
 }
 .form label {
   font-size: 20px;
@@ -148,7 +218,7 @@ h2 {
   font-size: 14px;
   font-family: var(--font-secondary);
   letter-spacing: -1px;
-  color: #191b1d80;
+  color: #8c8d8e;
   max-width: 50%;
 }
 .form p span {
@@ -163,6 +233,10 @@ h2 {
   left: 80%;
   height: 120px;
   width: 120px;
+}
+.form button:disabled {
+  background-color: #8c8d8e;
+  pointer-events: none;
 }
 .form button span {
   position: absolute;
