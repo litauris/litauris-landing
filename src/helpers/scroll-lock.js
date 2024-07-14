@@ -1,4 +1,8 @@
 export function enableScrollLock(marginTop = 0) {
+  if (marginTop !== window.screenY) {
+    window.scrollTo({ left: window.scrollX, top: marginTop, behavior: 'smooth' });
+  }
+
   document.body.style.marginTop = `-${marginTop || window.scrollY}px`;
   document.body.style.position = 'fixed';
   document.body.style.overflowY = 'scroll';

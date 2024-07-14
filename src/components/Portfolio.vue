@@ -106,11 +106,13 @@ export default {
             const marginTop =
               window.scrollY +
               entry.boundingClientRect.top -
-              (window.innerHeight / 2 - sliderWrapper.offsetHeight / 2);
+              (window.innerHeight / 2 - sliderWrapper.offsetHeight / 2) -
+              50;
 
             enableScrollLock(marginTop);
           } else {
             this.isSliderVisible = false;
+            disableScrollLock();
           }
         });
       }, options);
