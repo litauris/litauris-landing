@@ -2,7 +2,7 @@
   <section>
     <div class="wrapper">
       <img src="@/assets/content/banner.jpg" alt="banner" />
-      <h2>5X Faster Time to Market</h2>
+      <h2 class="desktop-only">5X Faster Time to Market</h2>
     </div>
   </section>
 </template>
@@ -21,9 +21,6 @@ export default {
   position: relative;
   width: 100%;
 }
-h2 {
-  display: none;
-}
 @media (width < 1024px) {
   section {
     height: 340px;
@@ -40,12 +37,11 @@ h2 {
 @media (width >= 1024px) {
   .wrapper h2 {
     color: var(--heading-color-light);
-    display: block;
     font-size: 60px;
     font-weight: 500;
     position: absolute;
     text-align: center;
-    width: 500px;
+    max-width: 500px;
   }
 }
 </style>
