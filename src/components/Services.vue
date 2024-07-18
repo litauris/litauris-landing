@@ -46,7 +46,7 @@ export default {
         {
           title: 'Web App',
           content:
-            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+            'You design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
           src: webAppImage,
         },
         {
