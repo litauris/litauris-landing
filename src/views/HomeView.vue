@@ -27,5 +27,8 @@ export default {
     Portfolio,
     Questions,
   },
+  head: {
+    title: 'Litauris | Lowcode Agency',
+  },
 };
 </script>
