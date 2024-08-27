@@ -40,7 +40,7 @@ export default {
         {
           title: 'Mobile App',
           content:
-            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+            'Hello World',
           src: mobileAppImage,
         },
         {
