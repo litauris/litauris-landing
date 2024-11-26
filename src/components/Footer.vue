@@ -107,6 +107,7 @@ button span {
   div.p-dialog {
     max-height: initial;
     height: 100%;
+    width: 100%;
     --p-dialog-border-radius: 0;
   }
   .p-dialog .p-dialog-close-button {

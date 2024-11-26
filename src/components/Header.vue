@@ -120,8 +120,9 @@ header {
   display: flex;
 }
 .calendly {
-  background-color: #bbbcbd;
+  background-color: #1a4dd1;
   border-radius: 24px;
+  color: var(--heading-color-light);
   padding: 8px 20px;
 }
 

@@ -134,7 +134,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
-  padding-block: 32px 12px;
+  padding: 32px 12px 12px;
 }
 h2 {
   font-weight: 500;
@@ -251,9 +251,6 @@ h2 {
   letter-spacing: -1px;
 }
 
-.success {
-  padding-bottom: 10px;
-}
 .success h2 {
   grid-column: span 2;
   border-bottom: 1px solid #f3f3f3;
@@ -275,6 +272,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    padding-inline: 0;
   }
   h2 {
     font-size: 36px;
