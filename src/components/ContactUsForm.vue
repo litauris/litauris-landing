@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapper row">
+    <div class="wrapper row" v-if="!isSubmitted">
       <h2>Have a project in mind?</h2>
       <form class="form" ref="form" novalidate @submit.prevent="submit">
         <FloatLabel>
@@ -31,6 +31,14 @@
         <button type="submit" :disabled="isLoading"><span>Submit</span></button>
       </form>
     </div>
+    <div class="wrapper row success" v-else>
+      <h2>Thanks for reaching out! <span class="light">We'll be in touch soon!</span></h2>
+      <div>
+        <p>Your message has been sent successfully.</p>
+        <p>We typically reply within 24 hours!</p>
+      </div>
+      <button @click="$emit('close')">OK</button>
+    </div>
     <Toast position="top-center" />
   </section>
 </template>
@@ -46,7 +54,7 @@ import { useToast } from 'primevue/usetoast';
 
 export default {
   name: 'ContactUsForm',
-  emits: ['submitted'],
+  emits: ['close'],
   components: {
     InputText,
     FloatLabel,
@@ -60,6 +68,7 @@ export default {
       email: '',
       message: '',
       isLoading: false,
+      isSubmitted: false,
     };
   },
   setup() {
@@ -86,14 +95,7 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
-            this.toast$.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'Your message sent',
-              life: 3000,
-            });
-
-            this.$emit('submitted');
+            this.isSubmitted = true;
           } else {
             this.showErrorMessage();
           }
@@ -132,7 +134,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
-  margin-top: 32px;
+  padding-block: 32px 12px;
 }
 h2 {
   font-weight: 500;
@@ -248,7 +250,27 @@ h2 {
   font-family: var(--font-secondary);
   letter-spacing: -1px;
 }
-@media (width< 1024px) {
+
+.success {
+  padding-bottom: 10px;
+}
+.success h2 {
+  grid-column: span 2;
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 90px;
+}
+.success h2 .light {
+  display: block;
+  color: #bab9be;
+}
+.success button {
+  background: none;
+  border-radius: 24px;
+  padding: 8px 20px;
+  border: 1px solid #bbbcbd;
+}
+
+@media (width < 1024px) {
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -275,6 +297,9 @@ h2 {
   .form button span {
     top: 20px;
     right: 18px;
+  }
+  .success h2 {
+    padding-bottom: 40px;
   }
 }
 </style>
