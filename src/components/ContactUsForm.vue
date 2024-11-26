@@ -76,6 +76,8 @@ export default {
 
       this.isLoading = true;
 
+      window.fbq('track', 'Lead');
+
       const formData = new FormData(this.$refs.form);
 
       fetch('/sendmail.php', {
