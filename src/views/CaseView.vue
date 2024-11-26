@@ -26,5 +26,8 @@ export default {
   head: {
     title: 'Case Study | Lowcode Agency',
   },
+  mounted() {
+    window.fbq('track', 'PageView');
+  },
 };
 </script>

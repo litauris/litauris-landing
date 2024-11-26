@@ -30,5 +30,8 @@ export default {
   head: {
     title: 'Litauris | Lowcode Agency',
   },
+  mounted() {
+    window.fbq('track', 'PageView');
+  },
 };
 </script>
