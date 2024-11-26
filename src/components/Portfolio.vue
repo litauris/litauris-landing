@@ -87,11 +87,18 @@ export default {
     },
     initSlider() {
       if (window.innerWidth < 1024) {
-        this.observer && this.observer.disconnect();
-        document.removeEventListener('wheel', this.wheelHandler);
+        if (this.observer) {
+          this.observer.disconnect();
+          document.removeEventListener('wheel', this.wheelHandler);
+          disableScrollLock();
+
+          this.observer = null;
+        }
 
         return;
       }
+
+      if (this.observer) return;
 
       const sliderWrapper = this.$refs.sliderWrapper;
       const options = {
@@ -100,6 +107,12 @@ export default {
 
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
+          if (window.scrollToTopActive) {
+            this.sliderScrollPosition = 0;
+
+            return;
+          }
+
           if (entry.isIntersecting) {
             this.isSliderVisible = true;
 
@@ -112,6 +125,7 @@ export default {
             enableScrollLock(marginTop);
           } else {
             this.isSliderVisible = false;
+
             disableScrollLock();
           }
         });

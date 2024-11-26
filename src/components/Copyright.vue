@@ -30,7 +30,12 @@ export default {
   },
   methods: {
     scrollToTop() {
+      window.scrollToTopActive = true;
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      setTimeout(() => {
+        window.scrollToTopActive = false;
+      }, 300);
     },
   },
 };
