@@ -116,7 +116,7 @@ export default {
 
       // @TODO: Move this request to a separate service
       fetch(
-        'https://api.backendless.com/EB840B05-165A-4135-8034-86A1DAFD313A/D7E7F890-1BF4-434C-9299-C6289791502D/data/contactForm',
+        'https://api.backendless.com/EB840B05-165A-4135-8034-86A1DAFD313A/D7E7F890-1BF4-434C-9299-C6289791502D/services/LitaurisCMS/postContactForm',
         {
           method: 'POST',
           headers: {
@@ -277,6 +277,20 @@ h2 {
 }
 .file-uploaded :deep(.p-fileupload-header) {
   display: none;
+}
+:deep(.p-fileupload-file-thumbnail) {
+  height: 44px;
+  position: relative;
+  width: 44px;
+}
+:deep(.p-fileupload-file-thumbnail)::before {
+  background-color: #ffffff;
+  background-image: url('@/assets/icons/file.png');
+  background-size: contain;
+  content: '';
+  inset: 0;
+  position: absolute;
+  z-index: 1;
 }
 :deep(.p-badge) {
   display: none;
