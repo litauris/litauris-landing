@@ -30,6 +30,7 @@
           </label>
         </FloatLabel>
         <FileUpload
+          ref="fileInput"
           :maxFileSize="31457280"
           :showUploadButton="false"
           :showCancelButton="false"
@@ -149,6 +150,8 @@ export default {
       const extension = file.name.substring(dotIndex);
       const fileName = `${name}_${timestamp}${extension}`;
 
+      this.fileName = fileName;
+
       const formData = new FormData();
 
       formData.append('file', file);
@@ -163,16 +166,14 @@ export default {
         },
       )
         .then((response) => {
-          if (response.ok) {
-            this.fileName = fileName;
-          } else {
-            this.showFileUploadErrorMessage();
+          if (!response.ok) {
+            this.handleFileUploadError();
           }
         })
         .catch((error) => {
           console.error(error);
 
-          this.showFileUploadErrorMessage();
+          this.handleFileUploadError();
         });
     },
     removeFile() {
@@ -186,7 +187,9 @@ export default {
         life: 3000,
       });
     },
-    showFileUploadErrorMessage() {
+    handleFileUploadError() {
+      this.$refs.fileInput.$el.querySelector('.p-fileupload-file-remove-button').click();
+
       this.toast$.add({
         severity: 'error',
         summary: 'Something went wrong',
@@ -273,7 +276,7 @@ h2 {
   letter-spacing: -1px;
 }
 :deep(.p-fileupload-header) {
-  padding-inline: 0;
+  padding: 29px 0 28px;
 }
 .file-uploaded :deep(.p-fileupload-header) {
   display: none;
