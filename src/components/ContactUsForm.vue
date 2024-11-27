@@ -2,7 +2,13 @@
   <section>
     <div class="wrapper row" v-if="!isSubmitted">
       <h2>Have a project in mind?</h2>
-      <form class="form" ref="form" novalidate @submit.prevent="submit">
+      <form
+        class="form"
+        :class="{ 'file-uploaded': fileName }"
+        ref="form"
+        novalidate
+        @submit.prevent="submit"
+      >
         <FloatLabel>
           <InputText id="name" name="name" v-model="name" :invalid="v$.name.$error" />
           <label for="name">Your name</label>
@@ -12,16 +18,26 @@
           <label for="email">Email</label>
         </FloatLabel>
         <FloatLabel>
-          <Textarea id="message" name="message" v-model="message" rows="3" />
-          <label for="message">Describe your project <span class="idea">(optional)</span></label>
+          <Textarea
+            id="description"
+            name="description"
+            v-model="projectDescription"
+            :invalid="v$.projectDescription.$error"
+            rows="3"
+          />
+          <label for="description">
+            Describe your project <span class="idea">(optional)</span>
+          </label>
         </FloatLabel>
         <FileUpload
-          name="file"
-          :maxFileSize="4194304"
-          :auto="true"
+          :maxFileSize="31457280"
           :showUploadButton="false"
           :showCancelButton="false"
-          chooseLabel="Attach Files"
+          chooseLabel="Attach File"
+          :customUpload="true"
+          :fileLimit="1"
+          @select="uploadFile"
+          @remove="removeFile"
         >
           <template #chooseicon><img src="@/assets/icons/plus-light.svg" alt="Plus" /></template>
           <template #empty></template>
@@ -49,7 +65,7 @@ import Textarea from 'primevue/textarea';
 import FileUpload from 'primevue/fileupload';
 import Toast from 'primevue/toast';
 import { useVuelidate } from '@vuelidate/core';
-import { required, email } from '@vuelidate/validators';
+import { required, email, maxLength } from '@vuelidate/validators';
 import { useToast } from 'primevue/usetoast';
 
 export default {
@@ -66,7 +82,8 @@ export default {
     return {
       name: '',
       email: '',
-      message: '',
+      projectDescription: '',
+      fileName: null,
       isLoading: false,
       isSubmitted: false,
     };
@@ -87,12 +104,27 @@ export default {
 
       window.fbq('track', 'Lead');
 
-      const formData = new FormData(this.$refs.form);
+      const payload = {
+        name: this.name,
+        email: this.email,
+        projectDescription: this.projectDescription,
+      };
 
-      fetch('/sendmail.php', {
-        method: 'POST',
-        body: formData,
-      })
+      if (this.fileName) {
+        payload.fileName = this.fileName;
+      }
+
+      // @TODO: Move this request to a separate service
+      fetch(
+        'https://api.backendless.com/EB840B05-165A-4135-8034-86A1DAFD313A/D7E7F890-1BF4-434C-9299-C6289791502D/data/contactForm',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        },
+      )
         .then((response) => {
           if (response.ok) {
             this.isSubmitted = true;
@@ -109,12 +141,57 @@ export default {
           this.isLoading = false;
         });
     },
+    uploadFile(event) {
+      const file = event.files[0];
+      const timestamp = Math.floor(Date.now() / 1000);
+      const dotIndex = file.name.lastIndexOf('.');
+      const name = file.name.substring(0, dotIndex);
+      const extension = file.name.substring(dotIndex);
+      const fileName = `${name}_${timestamp}${extension}`;
+
+      const formData = new FormData();
+
+      formData.append('file', file);
+
+      // @TODO: Move this request to a separate service
+      fetch(
+        'https://backendlessappcontent.com/EB840B05-165A-4135-8034-86A1DAFD313A/D7E7F890-1BF4-434C-9299-C6289791502D/files/leads/files/' +
+          fileName,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      )
+        .then((response) => {
+          if (response.ok) {
+            this.fileName = fileName;
+          } else {
+            this.showFileUploadErrorMessage();
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+
+          this.showFileUploadErrorMessage();
+        });
+    },
+    removeFile() {
+      this.fileName = null;
+    },
     showErrorMessage() {
       this.toast$.add({
         severity: 'error',
         summary: 'Error occurred',
         detail: 'Please, try again later',
         life: 3000,
+      });
+    },
+    showFileUploadErrorMessage() {
+      this.toast$.add({
+        severity: 'error',
+        summary: 'Something went wrong',
+        detail: 'Please, try again or upload a different file',
+        life: 5000,
       });
     },
   },
@@ -125,6 +202,9 @@ export default {
     email: {
       required,
       email,
+    },
+    projectDescription: {
+      maxLength: maxLength(1000),
     },
   },
 };
@@ -160,7 +240,8 @@ h2 {
   --p-inputtext-border-radius: 0;
   --p-inputtext-shadow: none;
 }
-.form input.p-invalid {
+.form input.p-invalid,
+.form textarea.p-invalid {
   border-color: #ff0000;
 }
 .form label {
@@ -194,6 +275,9 @@ h2 {
 :deep(.p-fileupload-header) {
   padding-inline: 0;
 }
+.file-uploaded :deep(.p-fileupload-header) {
+  display: none;
+}
 :deep(.p-badge) {
   display: none;
 }
@@ -216,6 +300,9 @@ h2 {
 }
 :deep(.p-fileupload-content) {
   padding: 0;
+}
+:deep(.p-fileupload-content .p-progressbar) {
+  display: none;
 }
 
 .form p {
