@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="wrapper row" v-if="!isSubmitted">
-      <h2>Get an estimate for your project cost and timeline</h2>
+      <h2>Get a quick estimate for your project today</h2>
       <form
         class="form"
         :class="{ 'file-uploaded': fileName }"
