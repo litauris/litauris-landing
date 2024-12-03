@@ -34,7 +34,7 @@ export default {
       slides: [
         {
           title: 'Jump Start.',
-          content: `We'll deliver a functional prototype within just one week.`,
+          content: `We'll deliver a first functional prototype within just one week.`,
         },
         {
           title: 'Full Control.',

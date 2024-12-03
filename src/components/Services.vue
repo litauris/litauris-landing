@@ -40,7 +40,7 @@ export default {
         {
           title: 'Mobile App',
           content:
-            'Hello World',
+            'We build hybrid mobile apps with a single codebase for both Android and iOS, delivering two apps at the cost of one.',
           src: mobileAppImage,
         },
         {
