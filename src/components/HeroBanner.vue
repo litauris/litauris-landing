@@ -10,7 +10,7 @@
           <img src="@/assets/content/square.svg" alt="Square" />
         </div>
         <p>
-          Modern businesses can’t afford to wait—speed is everything. We’ll launch your Product or MVP quickly and efficiently, without the need for costly traditional hand-coded development.
+          We’ll launch your Product or MVP quickly and efficiently, without the need for costly traditional hand-coded development.
         </p>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <section>
     <div class="wrapper">
       <img src="@/assets/content/banner.jpg" alt="banner" />
-      <h2 class="desktop-only">5X Faster Time to Market</h2>
+      <h2 class="desktop-only">10X faster Time to Market</h2>
     </div>
   </section>
 </template>
