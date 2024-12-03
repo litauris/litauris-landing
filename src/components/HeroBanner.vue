@@ -10,7 +10,7 @@
           <img src="@/assets/content/square.svg" alt="Square" />
         </div>
         <p>
-          We’ll launch your Product or MVP quickly and efficiently, without the need for costly traditional hand-coded development.
+          Launch your Product or MVP with us. Fast and cost-effectively. No expensive hand-coded development needed.
         </p>
       </div>
     </div>
