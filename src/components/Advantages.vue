@@ -42,7 +42,7 @@ export default {
         },
         {
           title: 'Flexibility.',
-          content: `Adjust functionality as we progress, embracing great ideas as they emerge.`,
+          content: `Adjust functionality as we go, embrace great ideas as they emerge.`,
         },
       ],
     };
