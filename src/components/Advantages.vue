@@ -5,8 +5,7 @@
       <h2>Advantages</h2>
       <div class="advantages">
         <p>
-          Thanks to the No Code approach, there is no need to attract highly qualified development
-          teams, which reduces costs.
+          The Low Code approach eliminates the need for highly specialized development teams, significantly reducing project costs without compromising quality.
         </p>
       </div>
       <div class="slider">
