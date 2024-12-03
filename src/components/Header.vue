@@ -32,10 +32,9 @@
             </template>
 
             <div class="drawer-content">
-              <RouterLink class="case" to="/case" v-if="!isCasePage" @click="routerClick">
-                <span>Case Study</span>
-                <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
-              </RouterLink>
+   
+   
+              
               <RouterLink class="case" to="/" v-else @click="routerClick">
                 <span>About us</span>
                 <img src="@/assets/icons/plus.svg" alt="Plus" />
