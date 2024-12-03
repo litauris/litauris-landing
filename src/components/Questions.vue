@@ -45,25 +45,25 @@ export default {
     return {
       questions: [
         {
-          title: 'What is No Code',
+          title: 'What is Low Code',
           content:
-            'User research, CJMs, prototyping, value proposition validation, design iterations, design systems and UI kits.',
+            'Low Code is a way to build apps and websites using visual tools with minimal coding. It combines the ease of No Code with the flexibility of custom code, allowing for faster development while still enabling advanced features when needed.',
         },
         {
           title: 'What is the price',
-          content: 'TBD',
+          content: 'Prices vary depending on the project scope. We offer cost-effective solutions, always lower than traditional development, as we use efficient Low Code platforms.',
         },
         {
           title: 'Which tools do you use',
-          content: 'TBD',
+          content: 'We use popular No Code tools like Bubble, Webflow, Adalo, Glide, Appery, Backendless which allow us to build powerful apps and websites with ease and speed.',
         },
         {
           title: 'Can I edit the project myself',
-          content: 'TBD',
+          content: 'Yes, we provide you with easy-to-use tools and training, so you can make changes and updates to your project whenever you need.',
         },
         {
           title: 'What are the risks',
-          content: 'TBD',
+          content: 'The main risk is that No Code platforms can have limitations in custom functionality. However, we choose the best tools for your needs, and we can always adjust as your business grows.',
         },
       ],
     };
