@@ -33,16 +33,16 @@ export default {
     return {
       slides: [
         {
-          title: 'Jump Start',
-          content: `We hit the ground running to deliver a functional prototype within just one week.`,
+          title: 'Jump Start.',
+          content: `We'll deliver a functional prototype within just one week.`,
         },
         {
-          title: 'Full Control',
-          content: `You become an integral part of our team, staying connected through daily communication loops`,
+          title: 'Full Control.',
+          content: `Join the team and stay synced with daily communication.`,
         },
         {
-          title: 'Flexibility',
-          content: `Stay agile with us—refine and enhance functionality as we progress, embracing great ideas as they emerge.`,
+          title: 'Flexibility.',
+          content: `Adjust functionality as we progress, embracing great ideas as they emerge.`,
         },
       ],
     };
