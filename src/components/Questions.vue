@@ -89,7 +89,7 @@ h2 {
   --p-accordion-panel-border-color: #222528;
   --p-accordion-panel-border-width: 1px 0 0 0;
 
-  --p-accordion-header-background: none;
+  --p-accordion-header-background: #000000;
   --p-accordion-header-color: var(--text-color-light);
   --p-accordion-header-hover-background: none;
   --p-accordion-header-hover-color: var(--text-color-light);
