@@ -46,19 +46,19 @@ export default {
         {
           title: 'Web App',
           content:
-            'You design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+            'Creating web apps on low-code platforms delivers desktop-level functionality at a fraction of the cost of traditional development.',
           src: webAppImage,
         },
         {
           title: 'Admin Panel',
           content:
-            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+            'Admin panels have never been easier to build. With ready-made components and UI elements, they can be created in just days and quickly tested by you in real-time.',
           src: adminPanelImage,
         },
         {
           title: 'Backend',
           content:
-            'We design and develop exceptional digital products & services, eCommerce, and brand communication solutions.',
+            'A powerful backend will be built for your mobile and web apps, ensuring efficient resource allocation and seamless scalability to support your business growth.',
           src: backendImage,
         },
       ],
