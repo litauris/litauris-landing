@@ -2,7 +2,7 @@
   <footer>
     <div class="row wrapper">
       <h2>What are you waiting for?</h2>
-      <h3>Get a stunning mobile app designed and online<span> within the next 10 days</span></h3>
+      <h3>Get a high-quality and user-friendly App<span> within the next month</span></h3>
       <button @click="visible = true">
         <span>Get an instant quote</span>
       </button>
