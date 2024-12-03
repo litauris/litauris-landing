@@ -10,8 +10,7 @@
           <img src="@/assets/content/square.svg" alt="Square" />
         </div>
         <p>
-          We develop mobile and web applications, admin panels from scratch and on no code
-          platforms.
+          Modern businesses can’t afford to wait—speed is everything. We’ll launch your Product or MVP quickly and efficiently, without the need for costly traditional hand-coded development.
         </p>
       </div>
     </div>
