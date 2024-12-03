@@ -2,8 +2,8 @@
   <section>
     <div class="row wrapper">
       <h2>
-        Web & Mobile Applications.
-        <span class="light">Low Code.</span>
+        Mobile & Web Apps
+        <span class="light">Low Code</span>
       </h2>
       <div class="herobanner">
         <div>
