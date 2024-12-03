@@ -38,7 +38,7 @@ export default {
         },
         {
           title: 'Full Control.',
-          content: `Join the team and stay synced with daily communication.`,
+          content: `Join the team and stay synced via daily communication.`,
         },
         {
           title: 'Flexibility.',
