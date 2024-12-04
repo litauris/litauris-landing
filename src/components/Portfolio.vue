@@ -3,8 +3,7 @@
     <div class="row wrapper">
       <h2>Portfolio</h2>
       <h3>
-        We are a creative agency working with brands – building insightful strategy, creating unique
-        designs and crafting experiences that bring positive change and value.
+        Our portfolio showcases a range of high-impact, custom-built solutions tailored for the restaurant industry, combining the power of low-code development with the efficiency of rapid delivery.
       </h3>
       <div ref="sliderWrapper">
         <div class="slider" ref="slider">
@@ -35,24 +34,24 @@ export default {
     return {
       cards: [
         {
-          title: 'Mobile Application',
+          title: 'Mobile App for Restaurants',
           subtitle:
-            'Brand Strategy & Voice, Branding & Design, Digital & Web Content & Campaigns, Events & Activations',
+            'A loyalty and rewards system for frequent customers, offering points, discounts, and personalized promotions based on their dining preferences.',
           src: mobileAppImage,
         },
         {
           title: 'Admin Panel',
-          subtitle: 'Branding & Design',
+          subtitle: 'Built-in analytics tools for tracking key metrics like sales, customer behavior, and inventory turnover to inform data-driven decisions.',
           src: adminPanelImage,
         },
         {
-          title: 'Mobile Application',
-          subtitle: 'Branding & Design',
+          title: 'Mobile App with Discount Offers',
+          subtitle: 'A seamless mobile app that allows customers to browse menus, place orders, and make payments directly from their phones.',
           src: mobileApp2Image,
         },
         {
           title: 'Web Application',
-          subtitle: 'Branding & Design',
+          subtitle: 'Web version of Discount Offers application, which allows user to interact with system from a desktop browsers.',
           src: webAppImage,
         },
       ],
