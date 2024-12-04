@@ -51,19 +51,23 @@ export default {
         },
         {
           title: 'What is the price',
-          content: 'Prices vary depending on the project scope. We offer cost-effective solutions, always lower than traditional development, as we use efficient Low Code platforms.',
+          content:
+            'Prices vary depending on the project scope. We offer cost-effective solutions, always lower than traditional development, as we use efficient Low Code platforms.',
         },
         {
           title: 'Which tools do you use',
-          content: 'We use popular No Code tools like Bubble, Webflow, Adalo, Glide, Appery, Backendless which allow us to build powerful apps and websites with ease and speed.',
+          content:
+            'We use popular No Code tools like Bubble, Webflow, Adalo, Glide, Appery, Backendless which allow us to build powerful apps and websites with ease and speed.',
         },
         {
           title: 'Can I edit the project myself',
-          content: 'Yes, we provide you with easy-to-use tools and training, so you can make changes and updates to your project whenever you need.',
+          content:
+            'Yes, we provide you with easy-to-use tools and training, so you can make changes and updates to your project whenever you need.',
         },
         {
           title: 'What are the risks',
-          content: 'The main risk is that No Code platforms can have limitations in custom functionality. However, we choose the best tools for your needs, and we can always adjust as your business grows.',
+          content:
+            'The main risk is that No Code platforms can have limitations in custom functionality. However, we choose the best tools for your needs, and we can always adjust as your business grows.',
         },
       ],
     };
@@ -89,7 +93,7 @@ h2 {
   --p-accordion-panel-border-color: #222528;
   --p-accordion-panel-border-width: 1px 0 0 0;
 
-  --p-accordion-header-background: #000000;
+  --p-accordion-header-background: none;
   --p-accordion-header-color: var(--text-color-light);
   --p-accordion-header-hover-background: none;
   --p-accordion-header-hover-color: var(--text-color-light);
@@ -99,6 +103,7 @@ h2 {
   --p-accordion-header-active-hover-color: var(--text-color-light);
   --p-accordion-header-padding: 16px 0;
 
+  --p-accordion-content-background: none;
   --p-accordion-content-padding: 0 0 16px;
   --p-accordion-content-color: var(--text-color-light);
 }
