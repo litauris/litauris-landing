@@ -3,7 +3,7 @@
     <div class="row wrapper">
       <h2>Portfolio</h2>
       <h3>
-        Our portfolio showcases a range of high-impact, custom-built solutions tailored for the restaurant industry, combining the power of low-code development with the efficiency of rapid delivery.
+        Our portfolio features high-impact, custom low-code solutions for the restaurant platform, delivering fast, cost-effective results.
       </h3>
       <div ref="sliderWrapper">
         <div class="slider" ref="slider">
