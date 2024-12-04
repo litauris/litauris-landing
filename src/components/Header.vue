@@ -7,11 +7,7 @@
       </div>
 
       <nav class="nav-wrapper">
-        <RouterLink class="case desktop-only" to="/case" v-if="!isCasePage" @click="routerClick">
-          <span>Case Study</span>
-          <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
-        </RouterLink>
-        <RouterLink class="case desktop-only" to="/" v-else @click="routerClick">
+        <RouterLink class="case desktop-only" to="/" v-if="isCasePage" @click="routerClick">
           <span>About us</span>
           <img src="@/assets/icons/plus.svg" alt="Plus" />
         </RouterLink>
@@ -33,11 +29,7 @@
             </template>
 
             <div class="drawer-content">
-              <RouterLink class="case" to="/case" v-if="!isCasePage" @click="routerClick">
-                <span>Case Study</span>
-                <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
-              </RouterLink>
-              <RouterLink class="case" to="/" v-else @click="routerClick">
+              <RouterLink class="case" to="/" v-if="isCasePage" @click="routerClick">
                 <span>About us</span>
                 <img src="@/assets/icons/plus.svg" alt="Plus" />
               </RouterLink>
@@ -112,6 +104,7 @@ header {
   align-items: center;
   column-gap: 0.5rem;
   display: flex;
+  flex: 1;
 }
 
 .menu-wrapper {
@@ -155,7 +148,7 @@ header {
     border-bottom: 1px solid #c4c4c4;
     justify-content: space-between;
     margin-bottom: 64px;
-    padding-top: 16px;
+    padding-bottom: 16px;
   }
   .drawer-content .case img {
     width: 30px;
@@ -163,7 +156,7 @@ header {
   .drawer-content a {
     font-size: 32px;
     font-weight: 500;
-    padding-bottom: 16px;
+    padding-top: 16px;
   }
 }
 
@@ -171,7 +164,7 @@ header {
   .nav-wrapper {
     display: flex;
     flex-basis: 70%;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
   .menu-wrapper {
     column-gap: 2rem;
