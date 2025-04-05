@@ -1,20 +1,24 @@
 <template>
   <header>
     <div class="row wrapper">
-      <div class="logo">
+      <component :is="isHomePage ? 'div' : 'RouterLink'" class="logo" :to="isHomePage ? null : '/'">
         <img src="@/assets/logo.svg" alt="Litauris" width="40" height="40" />
         <span>Litauris</span>
-      </div>
+      </component>
 
       <nav class="nav-wrapper">
-        <RouterLink class="case desktop-only" to="/" v-if="isCasePage" @click="routerClick">
+        <RouterLink class="case desktop-only" to="/case" v-if="!isCasePage" @click="routerClick">
+          <span>Case Study</span>
+          <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
+        </RouterLink>
+        <RouterLink class="case desktop-only" to="/" v-else @click="routerClick">
           <span>About us</span>
           <img src="@/assets/icons/plus.svg" alt="Plus" />
         </RouterLink>
 
         <div class="menu-wrapper">
-          <a class="desktop-only" href="#advantages" v-if="!isCasePage">Advantages</a>
-          <a class="desktop-only" href="#services" v-if="!isCasePage">Services</a>
+          <a class="desktop-only" href="#advantages" v-if="isHomePage">Advantages</a>
+          <a class="desktop-only" href="#services" v-if="isHomePage">Services</a>
           <a class="calendly" href="https://calendly.com/ceo-glu6">
             {{ isCasePage ? 'Book a Call' : `Let's talk` }}
           </a>
@@ -29,9 +33,13 @@
             </template>
 
             <div class="drawer-content">
-              <RouterLink class="case" to="/" v-if="isCasePage" @click="routerClick">
+              <RouterLink class="case" to="/" v-if="!isCasePage" @click="routerClick">
                 <span>About us</span>
                 <img src="@/assets/icons/plus.svg" alt="Plus" />
+              </RouterLink>
+              <RouterLink class="case" to="/case" v-else @click="routerClick">
+                <span>Case Study</span>
+                <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
               </RouterLink>
               <a href="#advantages" v-if="!isCasePage" @click="closeMenu">Advantages</a>
               <a href="#services" v-if="!isCasePage" @click="closeMenu">Services</a>
@@ -44,7 +52,7 @@
 </template>
 
 <script>
-import Drawer from 'primevue/drawer';
+import Drawer from 'primevue/drawer'
 
 export default {
   name: 'Header',
@@ -54,27 +62,30 @@ export default {
   data() {
     return {
       visible: false,
-    };
+    }
   },
   computed: {
+    isHomePage() {
+      return this.$route.name === 'home'
+    },
     isCasePage() {
-      return this.$route.name === 'case';
+      return this.$route.name === 'case'
     },
   },
   methods: {
     openMenu() {
-      this.visible = true;
+      this.visible = true
     },
     closeMenu() {
-      this.visible = false;
+      this.visible = false
     },
     routerClick() {
-      this.closeMenu();
+      this.closeMenu()
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     },
   },
-};
+}
 </script>
 
 <style scoped>
