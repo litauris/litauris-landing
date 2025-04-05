@@ -1,23 +1,21 @@
+<script setup>
+import { useHead } from '@unhead/vue';
+
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import Copyright from './components/Copyright.vue';
+
+useHead({
+  titleTemplate: '%s | Lowcode Agency',
+});
+</script>
+
 <template>
   <Header class="header" />
   <RouterView class="main" />
   <Footer />
   <Copyright />
 </template>
-
-<script>
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import Copyright from './components/Copyright.vue';
-
-export default {
-  components: {
-    Header,
-    Footer,
-    Copyright,
-  },
-};
-</script>
 
 <style scoped>
 .header {
