@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@primeuix/themes": "^1.0.1",
+    "@storyblok/vue": "^8.2.1",
     "@unhead/vue": "^2.0.3",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",

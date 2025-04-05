@@ -1,6 +1,16 @@
-# litauris
+# Litauris
 
-This template should help get you started developing with Vue 3 in Vite.
+## Storyblok Configuration
+
+Set `VITE_STORYBLOK_TOKEN` variable in `.env` file:
+
+```dotenv
+VITE_STORYBLOK_TOKEN=your_preview_access_token_goes_here
+```
+
+[How to get TOKEN](https://www.storyblok.com/tp/add-a-headless-CMS-to-vuejs-in-5-minutes#connecting-vue-to-storyblok)
+
+More documentation here: https://www.storyblok.com/docs/guide/getting-started
 
 ## Recommended IDE Setup
 

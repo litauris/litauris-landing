@@ -12,7 +12,9 @@ useHead({
 
 <template>
   <Header class="header" />
-  <RouterView class="main" />
+  <Suspense>
+    <RouterView />
+  </Suspense>
   <Footer />
   <Copyright />
 </template>
@@ -24,7 +26,7 @@ useHead({
   top: 0;
   z-index: 1;
 }
-.main {
+.header + main {
   margin-top: 81px;
 }
 </style>
