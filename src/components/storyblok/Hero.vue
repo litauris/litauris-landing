@@ -1,21 +1,23 @@
+<script setup lang="ts">
+defineProps<{
+  blok: {
+    title: string
+    description: string
+  }
+}>()
+</script>
+
 <template>
   <section>
     <div class="row wrapper">
-      <h2>The Wondr Restaurant Mobile Application 2 Months Post-launch</h2>
+      <h2>{{ blok.title }}</h2>
       <div class="herobanner">
-        <p>
-          The story of the two-month launch journey of the mobile application into the market, from
-          ideation to full implementation.
-        </p>
+        <p>{{ blok.description }}</p>
       </div>
     </div>
   </section>
 </template>
-<script>
-export default {
-  name: 'HeroBannerCase',
-};
-</script>
+
 <style scoped>
 section {
   background-color: var(--background-color-soft);
@@ -56,7 +58,6 @@ h2 {
   }
 }
 @media (width >= 1024px) {
-  /* comp */
   .wrapper {
     align-items: flex-end;
     display: grid;

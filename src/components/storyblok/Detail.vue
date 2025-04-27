@@ -14,7 +14,7 @@ const contentParagraphs = computed(() => {
 </script>
 
 <template>
-  <div class="info">
+  <div class="detail">
     <h3>{{ blok.title }}</h3>
     <p v-for="(paragraph, index) in contentParagraphs" :key="index">{{ paragraph }}</p>
   </div>

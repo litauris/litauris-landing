@@ -1,15 +1,21 @@
+<script setup lang="ts">
+import type { SBImage } from '@/api/SBImage.ts'
+
+defineProps<{
+  blok: {
+    image: SBImage
+  }
+}>()
+</script>
+
 <template>
   <section>
     <div class="wrapper">
-      <img src="@/assets/content/banner-case.jpg" alt="banner" />
+      <img :src="blok.image.filename" :alt="blok.image.alt" />
     </div>
   </section>
 </template>
-<script>
-export default {
-  name: 'BannerCase',
-};
-</script>
+
 <style scoped>
 .wrapper {
   display: flex;

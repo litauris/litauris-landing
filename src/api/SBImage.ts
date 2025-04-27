@@ -1,4 +1,4 @@
 export interface SBImage {
   filename: string
-  alt: ?string
+  alt: string | undefined
 }

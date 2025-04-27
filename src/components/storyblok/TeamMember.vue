@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { SBImage } from '@/api/SBImage.ts'
+import type { SbBlokData } from '@storyblok/vue'
 
 defineProps<{
   blok: {
     avatar: SBImage
-    details: []
+    details: SbBlokData[]
   }
 }>()
 </script>
@@ -13,9 +14,7 @@ defineProps<{
   <article class="team-member row wrapper">
     <img class="team-member__avatar" :src="blok.avatar.filename" :alt="blok.avatar.alt" />
     <div class="team-member__details">
-      <div v-for="inblok in blok.details" :key="inblok._uid">
-        <StoryblokComponent :blok="inblok" />
-      </div>
+      <StoryblokComponent v-for="inblok in blok.details" :blok="inblok" :key="inblok._uid" />
     </div>
   </article>
 </template>
