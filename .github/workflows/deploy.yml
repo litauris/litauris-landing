@@ -22,10 +22,6 @@ jobs:
       - name: Run the build command
         run: npm run build
 
-      - name: Move services to dist
-        run: |
-          cp services/contact-us.html dist/contact-us
-
       - name: Set up SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}

@@ -1,3 +1,23 @@
+<script setup>
+import { onMounted } from 'vue';
+import { useHead } from '@unhead/vue';
+
+import HeroBanner from '../components/HeroBanner.vue';
+import Banner from '../components/Banner.vue';
+import Advantages from '../components/Advantages.vue';
+import Services from '../components/Services.vue';
+import Portfolio from '../components/Portfolio.vue';
+import Questions from '../components/Questions.vue';
+
+useHead({
+  title: 'Litauris',
+});
+
+onMounted(() => {
+  window.fbq('track', 'PageView');
+});
+</script>
+
 <template>
   <main>
     <HeroBanner />
@@ -8,30 +28,3 @@
     <Questions />
   </main>
 </template>
-
-<script>
-import HeroBanner from '../components/HeroBanner.vue';
-import Banner from '../components/Banner.vue';
-import Advantages from '../components/Advantages.vue';
-import Services from '../components/Services.vue';
-import Portfolio from '../components/Portfolio.vue';
-import Questions from '../components/Questions.vue';
-
-export default {
-  name: 'HomeView',
-  components: {
-    HeroBanner,
-    Banner,
-    Advantages,
-    Services,
-    Portfolio,
-    Questions,
-  },
-  head: {
-    title: 'Litauris | Lowcode Agency',
-  },
-  mounted() {
-    window.fbq('track', 'PageView');
-  },
-};
-</script>

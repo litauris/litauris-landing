@@ -1,23 +1,23 @@
-<template>
-  <Header class="header" />
-  <RouterView class="main" />
-  <Footer />
-  <Copyright />
-</template>
+<script setup>
+import { useHead } from '@unhead/vue';
 
-<script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import Copyright from './components/Copyright.vue';
 
-export default {
-  components: {
-    Header,
-    Footer,
-    Copyright,
-  },
-};
+useHead({
+  titleTemplate: '%s | Lowcode Agency',
+});
 </script>
+
+<template>
+  <Header class="header" />
+  <Suspense>
+    <RouterView />
+  </Suspense>
+  <Footer />
+  <Copyright />
+</template>
 
 <style scoped>
 .header {
@@ -26,7 +26,7 @@ export default {
   top: 0;
   z-index: 1;
 }
-.main {
+.header + main {
   margin-top: 81px;
 }
 </style>
