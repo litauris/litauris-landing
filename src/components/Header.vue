@@ -7,7 +7,7 @@
       </component>
 
       <nav class="nav-wrapper">
-        <RouterLink class="case desktop-only" to="/case" v-if="!isCasePage" @click="routerClick">
+        <RouterLink class="case desktop-only" to="/case" v-if="isHomePage" @click="routerClick">
           <span>Case Study</span>
           <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
         </RouterLink>
@@ -33,16 +33,16 @@
             </template>
 
             <div class="drawer-content">
-              <RouterLink class="case" to="/" v-if="!isCasePage" @click="routerClick">
-                <span>About us</span>
-                <img src="@/assets/icons/plus.svg" alt="Plus" />
-              </RouterLink>
-              <RouterLink class="case" to="/case" v-else @click="routerClick">
+              <RouterLink class="case" to="/case" v-if="isHomePage" @click="routerClick">
                 <span>Case Study</span>
                 <img src="@/assets/icons/arrow-down.svg" alt="Arrow" />
               </RouterLink>
-              <a href="#advantages" v-if="!isCasePage" @click="closeMenu">Advantages</a>
-              <a href="#services" v-if="!isCasePage" @click="closeMenu">Services</a>
+              <RouterLink class="case" to="/" v-else @click="routerClick">
+                <span>About us</span>
+                <img src="@/assets/icons/plus.svg" alt="Plus" />
+              </RouterLink>
+              <a href="#advantages" v-if="isHomePage" @click="closeMenu">Advantages</a>
+              <a href="#services" v-if="isHomePage" @click="closeMenu">Services</a>
             </div>
           </Drawer>
         </div>
@@ -51,7 +51,7 @@
   </header>
 </template>
 
-<script>
+<script lang="ts">
 import Drawer from 'primevue/drawer'
 
 export default {
@@ -115,7 +115,6 @@ header {
   align-items: center;
   column-gap: 0.5rem;
   display: flex;
-  flex: 1;
 }
 
 .menu-wrapper {
@@ -175,7 +174,7 @@ header {
   .nav-wrapper {
     display: flex;
     flex-basis: 70%;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
   .menu-wrapper {
     column-gap: 2rem;
