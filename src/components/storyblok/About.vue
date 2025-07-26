@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/vue'
+import { getParagraphs } from '@/helpers/sb-textarea.ts'
 
 defineProps<{
   blok: {
     type: string
     niche: string
     development: string
-    details: SbBlokData[]
+    details: Array<
+      SbBlokData & {
+        title: string
+        content: string
+      }
+    >
   }
 }>()
 </script>
@@ -24,7 +30,12 @@ defineProps<{
       <div class="about">
         <h2>About the&nbsp;project</h2>
         <div>
-          <StoryblokComponent v-for="inblok in blok.details" :blok="inblok" :key="inblok._uid" />
+          <div v-for="inblok in blok.details" :key="inblok._uid">
+            <h3>{{ inblok.title }}</h3>
+            <p v-for="(paragraph, index) in getParagraphs(inblok.content)" :key="index">
+              {{ paragraph }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -63,13 +74,13 @@ section {
   font-weight: 500;
   font-size: 25px;
 }
-.about:deep() h3 {
+.about h3 {
   font-family: var(--font-primary);
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
 }
-.about:deep() p {
+.about p {
   font-size: 20px;
   line-height: 26px;
   padding-block: 20px;
@@ -108,11 +119,11 @@ section {
     font-size: 50px;
     line-height: 60px;
   }
-  .about:deep() h3 {
+  .about h3 {
     font-size: 22px;
     line-height: 25px;
   }
-  .about:deep() p {
+  .about p {
     font-size: 28px;
     line-height: 36px;
   }

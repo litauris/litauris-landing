@@ -2,7 +2,9 @@
 import type { SbBlokData } from '@storyblok/vue'
 
 defineProps<{
-  blok: SbBlokData
+  blok: SbBlokData & {
+    body: SbBlokData[]
+  }
 }>()
 </script>
 

@@ -3,6 +3,7 @@ import type { SBImage } from '@/api/SBImage.ts'
 
 defineProps<{
   blok: {
+    title?: string
     image: SBImage
   }
 }>()
@@ -12,6 +13,7 @@ defineProps<{
   <section>
     <div class="wrapper">
       <img :src="blok.image.filename" :alt="blok.image.alt" />
+      <h2 class="desktop-only" v-if="blok.title">{{ blok.title }}</h2>
     </div>
   </section>
 </template>
@@ -33,8 +35,19 @@ defineProps<{
     height: 100%;
   }
   .wrapper img {
-    object-fit: cover;
     height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (width >= 1024px) {
+  .wrapper h2 {
+    color: var(--heading-color-light);
+    font-size: 60px;
+    font-weight: 500;
+    position: absolute;
+    text-align: center;
+    max-width: 500px;
   }
 }
 </style>

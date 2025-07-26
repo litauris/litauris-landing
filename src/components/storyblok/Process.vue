@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import type { SbBlokData } from '@storyblok/vue'
+import { getParagraphs } from '@/helpers/sb-textarea.ts'
 
 const props = defineProps<{
   blok: {
-    details: SbBlokData[]
+    details: Array<
+      SbBlokData & {
+        title: string
+        content: string
+      }
+    >
   }
 }>()
 
@@ -24,7 +30,12 @@ const detailsWithLetters = props.blok.details.map((detail, index) => ({
           :key="inblok._uid"
           :style="{ '--detail-letter': inblok.letter }"
         >
-          <StoryblokComponent :blok="inblok" />
+          <div class="detail">
+            <h3>{{ inblok.title }}</h3>
+            <p v-for="(paragraph, index) in getParagraphs(inblok.content)" :key="index">
+              {{ paragraph }}
+            </p>
+          </div>
         </li>
       </ol>
     </div>
@@ -69,12 +80,12 @@ h2 {
   width: 30px;
   height: 30px;
 }
-.line:deep() h3 {
+.line:deep(h3) {
   font-size: 24px;
   letter-spacing: -1px;
   margin-bottom: 16px;
 }
-.line:deep() p {
+.line:deep(p) {
   font-family: var(--font-secondary);
   font-size: 16px;
   font-weight: 400;
@@ -96,11 +107,11 @@ h2 {
     column-gap: 62px;
     padding-block: 32px;
   }
-  .line:deep() h3 {
+  .line:deep(h3) {
     font-size: 30px;
     margin-bottom: 20px;
   }
-  .line:deep() p {
+  .line:deep(p) {
     font-size: 22px;
     line-height: 25px;
   }

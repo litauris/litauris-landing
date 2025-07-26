@@ -1,5 +1,11 @@
 <script setup lang="ts">
-defineProps({ blok: Object })
+import type { SbBlokData } from '@storyblok/vue'
+
+defineProps<{
+  blok: SbBlokData & {
+    columns: SbBlokData[]
+  }
+}>()
 </script>
 
 <template>

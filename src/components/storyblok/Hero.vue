@@ -2,6 +2,7 @@
 defineProps<{
   blok: {
     title: string
+    title_accent?: string
     description: string
   }
 }>()
@@ -10,8 +11,12 @@ defineProps<{
 <template>
   <section>
     <div class="row wrapper">
-      <h2>{{ blok.title }}</h2>
+      <h2>
+        {{ blok.title }}
+        <span class="light" v-if="blok.title_accent">{{ blok.title_accent }}</span>
+      </h2>
       <div class="herobanner">
+        <img src="@/assets/content/square.svg" alt="Square" />
         <p>{{ blok.description }}</p>
       </div>
     </div>
@@ -24,51 +29,59 @@ section {
 }
 .wrapper {
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
-  row-gap: 40px;
-  padding-block: 60px;
+  justify-content: space-between;
+
+  gap: 100px;
+  padding-block: 100px;
 }
 h2 {
   display: flex;
   flex-direction: column;
 
   color: var(--heading-color);
-  font-size: 34px;
+  font-size: 40px;
+  line-height: 44px;
   font-weight: 500;
-  line-height: 38px;
-  max-width: 320px;
+}
+h2 span {
+  color: var(--heading-color-light);
 }
 .herobanner {
   display: flex;
-  justify-content: end;
-  align-items: end;
+  gap: 100px;
+  flex-direction: column-reverse;
+}
+.herobanner img {
+  width: 150px;
+  height: 90px;
 }
 .herobanner p {
   font-family: var(--font-secondary);
-  max-width: 300px;
-  font-size: 16px;
-  letter-spacing: -1px;
+  font-size: 18px;
   line-height: 22px;
 }
 
 @media (width < 1024px) {
   section {
-    height: calc(50vh - 81px);
+    height: calc(100vh - 81px);
   }
 }
+
 @media (width >= 1024px) {
-  .wrapper {
-    align-items: flex-end;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    padding-block: 100px;
-  }
   h2 {
-    font-size: 58px;
+    font-size: 60px;
+    line-height: 60px;
     max-width: 770px;
-    line-height: 58px;
+  }
+  .herobanner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .herobanner img {
+    width: 280px;
+    height: 165px;
   }
   .herobanner p {
     max-width: 440px;

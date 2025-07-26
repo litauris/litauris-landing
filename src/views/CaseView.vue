@@ -11,7 +11,7 @@ useHead({
 })
 
 onMounted(() => {
-  window.fbq('track', 'PageView')
+  window.fbq?.('track', 'PageView')
 })
 </script>
 

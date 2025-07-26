@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-
 import { useStoryblok } from '@storyblok/vue'
 
 const story = await useStoryblok('contact-us', { version: 'draft' })

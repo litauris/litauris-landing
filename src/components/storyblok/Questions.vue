@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import Accordion from 'primevue/accordion'
+import AccordionPanel from 'primevue/accordionpanel'
+import AccordionHeader from 'primevue/accordionheader'
+import AccordionContent from 'primevue/accordioncontent'
+
+import type { SbBlokData } from '@storyblok/vue'
+
+defineProps<{
+  blok: {
+    questions: Array<
+      SbBlokData & {
+        title: string
+        content: string
+      }
+    >
+  }
+}>()
+</script>
+
 <template>
   <section>
     <div class="row wrapper">
@@ -5,12 +25,12 @@
       <Accordion class="accordion">
         <AccordionPanel
           class="accordion-panel"
-          v-for="(question, index) in questions"
-          :key="question.title"
-          :value="String(index)"
+          v-for="inblok in blok.questions"
+          :key="inblok._uid"
+          :value="inblok._uid"
         >
           <AccordionHeader>
-            <span class="accordion-header-title">{{ question.title }}</span>
+            <span class="accordion-header-title">{{ inblok.title }}</span>
             <template v-slot:toggleicon="{ active }">
               <span class="accordion-header-icon" :class="{ active: active }">{{
                 active ? '–' : '+'
@@ -18,7 +38,7 @@
             </template>
           </AccordionHeader>
           <AccordionContent>
-            <p>{{ question.content }}</p>
+            <p>{{ inblok.content }}</p>
           </AccordionContent>
         </AccordionPanel>
       </Accordion>
@@ -26,54 +46,6 @@
     </div>
   </section>
 </template>
-
-<script>
-import Accordion from 'primevue/accordion';
-import AccordionPanel from 'primevue/accordionpanel';
-import AccordionHeader from 'primevue/accordionheader';
-import AccordionContent from 'primevue/accordioncontent';
-
-export default {
-  name: 'Questions',
-  components: {
-    Accordion,
-    AccordionPanel,
-    AccordionHeader,
-    AccordionContent,
-  },
-  data() {
-    return {
-      questions: [
-        {
-          title: 'What is Low Code',
-          content:
-            'Low Code is a way to build apps and websites using visual tools with minimal coding. It combines the ease of No Code with the flexibility of custom code, allowing for faster development while still enabling advanced features when needed.',
-        },
-        {
-          title: 'What is the price',
-          content:
-            'Prices vary depending on the project scope. We offer cost-effective solutions, always lower than traditional development, as we use efficient Low Code platforms.',
-        },
-        {
-          title: 'Which tools do you use',
-          content:
-            'We use popular No Code tools like Bubble, Webflow, Adalo, Glide, Appery, Backendless which allow us to build powerful apps and websites with ease and speed.',
-        },
-        {
-          title: 'Can I edit the project myself',
-          content:
-            'Yes, we provide you with easy-to-use tools and training, so you can make changes and updates to your project whenever you need.',
-        },
-        {
-          title: 'What are the risks',
-          content:
-            'The main risk is that No Code platforms can have limitations in custom functionality. However, we choose the best tools for your needs, and we can always adjust as your business grows.',
-        },
-      ],
-    };
-  },
-};
-</script>
 
 <style scoped>
 section {

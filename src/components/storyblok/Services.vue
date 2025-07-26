@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import type { SbBlokData } from '@storyblok/vue'
+import type { SBImage } from '@/api/SBImage.ts'
+import { ref } from 'vue'
+
+const props = defineProps<{
+  blok: {
+    services: Array<
+      SbBlokData & {
+        title: string
+        content: string
+        image: SBImage
+      }
+    >
+  }
+}>()
+
+const visible = ref<boolean[]>(props.blok.services.map(() => false))
+
+const toggleVisibility = (index: number) => {
+  visible.value[index] = !visible.value[index]
+}
+</script>
+
 <template>
   <section>
     <a class="anchor" id="services" />
@@ -6,71 +30,27 @@
       <div class="services">
         <div
           class="line"
-          :class="{ active: service.visible }"
-          v-for="(service, index) in services"
-          :key="service.title"
+          :class="{ active: visible[index] }"
+          v-for="(inblok, index) in blok.services"
+          :key="inblok._uid"
           @click="toggleVisibility(index)"
         >
-          <h3>{{ service.title }}</h3>
+          <h3>{{ inblok.title }}</h3>
           <div class="column">
-            <p>{{ service.content }}</p>
-            <button>
-              <img src="@/assets/icons/arrow-left-down.svg" alt="arrow" />
+            <p>{{ inblok.content }}</p>
+            <button title="Show">
+              <img src="@/assets/icons/arrow-left-down.svg" alt="arrow" aria-hidden="true" />
             </button>
           </div>
           <div class="service-img-wrapper">
-            <img class="service-img" :src="service.src" alt="Mobile App" />
+            <img class="service-img" :src="inblok.image.filename" :alt="inblok.title" />
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-<script>
-import mobileAppImage from '@/assets/content/service-1.jpg';
-import webAppImage from '@/assets/content/service-2.jpg';
-import adminPanelImage from '@/assets/content/service-3.jpg';
-import backendImage from '@/assets/content/service-4.jpg';
 
-export default {
-  name: 'Services',
-  data() {
-    return {
-      services: [
-        {
-          title: 'Mobile App',
-          content:
-            'We build hybrid mobile apps with a single codebase for both Android and iOS, delivering two apps at the cost of one.',
-          src: mobileAppImage,
-        },
-        {
-          title: 'Web App',
-          content:
-            'Creating web apps on low-code platforms delivers desktop-level functionality at a fraction of the cost of traditional development.',
-          src: webAppImage,
-        },
-        {
-          title: 'Admin Panel',
-          content:
-            'Admin panels have never been easier to build. With ready-made components and UI elements, they can be created in just days and quickly tested by you in real-time.',
-          src: adminPanelImage,
-        },
-        {
-          title: 'Backend',
-          content:
-            'A powerful backend will be built for your mobile and web apps, ensuring efficient resource allocation and seamless scalability to support your business growth.',
-          src: backendImage,
-        },
-      ],
-    };
-  },
-  methods: {
-    toggleVisibility(index) {
-      this.services[index].visible = !this.services[index].visible;
-    },
-  },
-};
-</script>
 <style scoped>
 .wrapper {
   display: flex;

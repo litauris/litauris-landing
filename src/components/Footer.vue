@@ -12,9 +12,9 @@
     </Dialog>
   </footer>
 </template>
-<script>
-import Dialog from 'primevue/dialog';
-import ContactUsForm from './ContactUsForm.vue';
+<script lang="ts">
+import Dialog from 'primevue/dialog'
+import ContactUsForm from '@/components/ContactUsForm.vue'
 export default {
   name: 'Footer',
   components: {
@@ -24,9 +24,9 @@ export default {
   data() {
     return {
       visible: false,
-    };
+    }
   },
-};
+}
 </script>
 <style scoped>
 footer {

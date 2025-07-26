@@ -3,7 +3,8 @@
     <div class="row wrapper">
       <h2>Portfolio</h2>
       <h3>
-        Our portfolio features high-impact, custom low-code solutions for the restaurant platform, delivering fast, cost-effective results.
+        Our portfolio features high-impact, custom low-code solutions for the restaurant platform,
+        delivering fast, cost-effective results.
       </h3>
       <div ref="sliderWrapper">
         <div class="slider" ref="slider">
@@ -20,13 +21,13 @@
   </section>
 </template>
 <script>
-import { enableScrollLock, disableScrollLock } from '@/helpers/scroll-lock.js';
-import { throttle } from '@/helpers/throttle.js';
+import { enableScrollLock, disableScrollLock } from '@/helpers/scroll-lock.js'
+import { throttle } from '@/helpers/throttle.js'
 
-import mobileAppImage from '@/assets/content/slide-1.jpg';
-import adminPanelImage from '@/assets/content/slide-2.jpg';
-import mobileApp2Image from '@/assets/content/slide-3.jpg';
-import webAppImage from '@/assets/content/slide-4.jpg';
+import mobileAppImage from '@/assets/content/slide-1.jpg'
+import adminPanelImage from '@/assets/content/slide-2.jpg'
+import mobileApp2Image from '@/assets/content/slide-3.jpg'
+import webAppImage from '@/assets/content/slide-4.jpg'
 
 export default {
   name: 'Portfolio',
@@ -41,17 +42,20 @@ export default {
         },
         {
           title: 'Admin Panel',
-          subtitle: 'Built-in analytics tools for tracking key metrics like sales, customer behavior, and inventory turnover to inform data-driven decisions.',
+          subtitle:
+            'Built-in analytics tools for tracking key metrics like sales, customer behavior, and inventory turnover to inform data-driven decisions.',
           src: adminPanelImage,
         },
         {
           title: 'Mobile App with Discount Offers',
-          subtitle: 'A seamless mobile app that allows customers to browse menus, place orders, and make payments directly from their phones.',
+          subtitle:
+            'A seamless mobile app that allows customers to browse menus, place orders, and make payments directly from their phones.',
           src: mobileApp2Image,
         },
         {
           title: 'Web Application',
-          subtitle: 'Web version of Discount Offers application, which allows user to interact with system from a desktop browsers.',
+          subtitle:
+            'Web version of Discount Offers application, which allows user to interact with system from a desktop browsers.',
           src: webAppImage,
         },
       ],
@@ -59,90 +63,90 @@ export default {
       observer: null,
       sliderScrollPosition: 0,
       wheelHandler: null,
-    };
+    }
   },
   methods: {
     handleSlider(event) {
-      if (!this.isSliderVisible) return;
+      if (!this.isSliderVisible) return
 
-      const slider = this.$refs.slider;
-      const maxScrollLeft = slider.scrollWidth - slider.offsetWidth;
+      const slider = this.$refs.slider
+      const maxScrollLeft = slider.scrollWidth - slider.offsetWidth
 
-      let scrollLeft = -this.sliderScrollPosition + event.deltaY;
+      let scrollLeft = -this.sliderScrollPosition + event.deltaY
 
       if (scrollLeft <= 0 || scrollLeft >= maxScrollLeft) {
-        disableScrollLock();
-        this.isSliderVisible = false;
+        disableScrollLock()
+        this.isSliderVisible = false
       }
       if (scrollLeft <= 0) {
-        scrollLeft = 0;
+        scrollLeft = 0
       }
       if (scrollLeft >= maxScrollLeft) {
-        scrollLeft = maxScrollLeft;
+        scrollLeft = maxScrollLeft
       }
 
-      slider.style.left = -scrollLeft + 'px';
-      this.sliderScrollPosition = -scrollLeft;
+      slider.style.left = -scrollLeft + 'px'
+      this.sliderScrollPosition = -scrollLeft
     },
     initSlider() {
       if (window.innerWidth < 1024) {
         if (this.observer) {
-          this.observer.disconnect();
-          document.removeEventListener('wheel', this.wheelHandler);
-          disableScrollLock();
+          this.observer.disconnect()
+          document.removeEventListener('wheel', this.wheelHandler)
+          disableScrollLock()
 
-          this.observer = null;
+          this.observer = null
         }
 
-        return;
+        return
       }
 
-      if (this.observer) return;
+      if (this.observer) return
 
-      const sliderWrapper = this.$refs.sliderWrapper;
+      const sliderWrapper = this.$refs.sliderWrapper
       const options = {
         threshold: 0.9,
-      };
+      }
 
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (window.scrollToTopActive) {
-            this.sliderScrollPosition = 0;
+            this.sliderScrollPosition = 0
 
-            return;
+            return
           }
 
           if (entry.isIntersecting) {
-            this.isSliderVisible = true;
+            this.isSliderVisible = true
 
             const marginTop =
               window.scrollY +
               entry.boundingClientRect.top -
               (window.innerHeight / 2 - sliderWrapper.offsetHeight / 2) -
-              50;
+              50
 
-            enableScrollLock(marginTop);
+            enableScrollLock(marginTop)
           } else {
-            this.isSliderVisible = false;
+            this.isSliderVisible = false
 
-            disableScrollLock();
+            disableScrollLock()
           }
-        });
-      }, options);
+        })
+      }, options)
 
-      this.observer.observe(sliderWrapper);
+      this.observer.observe(sliderWrapper)
 
-      document.addEventListener('wheel', this.wheelHandler);
+      document.addEventListener('wheel', this.wheelHandler)
     },
   },
   mounted() {
-    this.wheelHandler = throttle(this.handleSlider, 10);
-
-    this.initSlider();
-
-    window.screen.orientation.addEventListener('change', this.initSlider);
+    // this.wheelHandler = throttle(this.handleSlider, 10)
+    //
+    // this.initSlider()
+    //
+    // window.screen.orientation.addEventListener('change', this.initSlider)
   },
-};
+}
 </script>
 <style scoped>
 section {

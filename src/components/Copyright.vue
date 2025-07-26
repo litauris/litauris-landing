@@ -20,25 +20,20 @@
     </div>
   </section>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: 'Copyright',
   data() {
     return {
       currentYear: new Date().getFullYear(),
-    };
+    }
   },
   methods: {
     scrollToTop() {
-      window.scrollToTopActive = true;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      setTimeout(() => {
-        window.scrollToTopActive = false;
-      }, 300);
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     },
   },
-};
+}
 </script>
 <style scoped>
 .wrapper {

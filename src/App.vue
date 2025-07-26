@@ -1,13 +1,13 @@
-<script setup>
-import { useHead } from '@unhead/vue';
+<script setup lang="ts">
+import { useHead } from '@unhead/vue'
 
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import Copyright from './components/Copyright.vue';
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import Copyright from './components/Copyright.vue'
 
 useHead({
   titleTemplate: '%s | Lowcode Agency',
-});
+})
 </script>
 
 <template>

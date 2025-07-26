@@ -34,7 +34,7 @@ app.use(StoryblokVue, {
 const modules = import.meta.glob('./components/storyblok/**/*.vue')
 
 for (const path in modules) {
-  modules[path]().then((mod) => {
+  modules[path]().then((mod: any) => {
     const componentName = path
       .replace('./components/storyblok/', '')
       .replace(/\.\w+$/, '')
