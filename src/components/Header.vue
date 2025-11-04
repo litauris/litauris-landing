@@ -25,7 +25,7 @@
 
           <button class="drawer-button mobile-only" @click="openMenu" title="Menu" />
           <Drawer class="drawer" v-model:visible="visible" position="right">
-            <template v-slot:header>
+            <template #header>
               <div class="logo drawer-header">
                 <img src="@/assets/logo.svg" alt="Litauris" width="40" height="40" />
                 <span>Litauris</span>
