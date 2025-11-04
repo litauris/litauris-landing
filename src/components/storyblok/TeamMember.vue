@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import type { SBImage } from '@/api/SBImage.ts'
 import type { SbBlokData } from '@storyblok/vue'
+import { getParagraphs } from '@/helpers/sb-textarea.ts'
 
 defineProps<{
   blok: {
     avatar: SBImage
-    details: SbBlokData[]
+    details: Array<
+      SbBlokData & {
+        title: string
+        content: string
+      }
+    >
   }
 }>()
 </script>
@@ -14,7 +20,12 @@ defineProps<{
   <article class="team-member row wrapper">
     <img class="team-member__avatar" :src="blok.avatar.filename" :alt="blok.avatar.alt" />
     <div class="team-member__details">
-      <StoryblokComponent v-for="inblok in blok.details" :blok="inblok" :key="inblok._uid" />
+      <div class="detail" v-for="inblok in blok.details" :key="inblok._uid">
+        <h3>{{ inblok.title }}</h3>
+        <p v-for="(paragraph, index) in getParagraphs(inblok.content)" :key="index">
+          {{ paragraph }}
+        </p>
+      </div>
     </div>
   </article>
 </template>

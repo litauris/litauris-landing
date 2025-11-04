@@ -149,7 +149,6 @@ h3 {
     left: 40%;
     width: 200px;
     height: 200px;
-    z-index: 1;
   }
 
   .line:hover h3 {

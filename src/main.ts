@@ -11,6 +11,7 @@ import Aura from '@primeuix/themes/aura'
 import ToastService from 'primevue/toastservice'
 
 import { StoryblokVue, apiPlugin } from '@storyblok/vue'
+import { initStoryblokComponents } from '@/components/storyblok'
 
 const app = createApp(App)
 
@@ -31,19 +32,6 @@ app.use(StoryblokVue, {
   use: [apiPlugin],
 })
 
-const modules = import.meta.glob('./components/storyblok/**/*.vue')
-
-for (const path in modules) {
-  modules[path]().then((mod: any) => {
-    const componentName = path
-      .replace('./components/storyblok/', '')
-      .replace(/\.\w+$/, '')
-      .split(/[-/]/)
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join('')
-
-    app.component(componentName, mod.default)
-  })
-}
+initStoryblokComponents(app)
 
 app.mount('#app')

@@ -31,11 +31,6 @@ defineProps<{
         >
           <AccordionHeader>
             <span class="accordion-header-title">{{ inblok.title }}</span>
-            <template v-slot:toggleicon="{ active }">
-              <span class="accordion-header-icon" :class="{ active: active }">{{
-                active ? '–' : '+'
-              }}</span>
-            </template>
           </AccordionHeader>
           <AccordionContent>
             <p>{{ inblok.content }}</p>
@@ -85,21 +80,6 @@ h2 {
 .accordion-header-title {
   font-size: 24px;
   font-weight: 500;
-}
-.accordion-header-icon {
-  background-color: #28292d;
-  border-radius: 50%;
-  color: #dfd5d5;
-  font-weight: 500;
-  line-height: 28px;
-  height: 30px;
-  text-align: center;
-  transition: background-color 0.3s ease-in-out;
-  width: 30px;
-}
-.accordion-header-icon.active {
-  background-color: #dfd5d5;
-  color: #28292d;
 }
 img {
   max-width: 100%;
