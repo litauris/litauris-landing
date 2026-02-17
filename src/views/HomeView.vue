@@ -2,10 +2,9 @@
 import { onMounted } from 'vue'
 import { useHead } from '@unhead/vue'
 import { useStoryblok } from '@storyblok/vue'
+import Portfolio from '../components/Portfolio.vue'
 
 const story = await useStoryblok('home', { version: 'draft' })
-
-import Portfolio from '../components/Portfolio.vue'
 
 useHead({
   title: 'Litauris',

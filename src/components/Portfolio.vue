@@ -1,3 +1,49 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import Carousel from 'primevue/carousel'
+
+import mobileAppImage from '@/assets/content/slide-1.jpg'
+import adminPanelImage from '@/assets/content/slide-2.jpg'
+import mobileApp2Image from '@/assets/content/slide-3.jpg'
+import webAppImage from '@/assets/content/slide-4.jpg'
+
+// TODO: Convert this component to storyblok component
+const cards = ref([
+  {
+    title: 'Mobile App for Restaurants',
+    subtitle:
+      'A loyalty and rewards system for frequent customers, offering points, discounts, and personalized promotions based on their dining preferences.',
+    src: mobileAppImage,
+  },
+  {
+    title: 'Admin Panel',
+    subtitle:
+      'Built-in analytics tools for tracking key metrics like sales, customer behavior, and inventory turnover to inform data-driven decisions.',
+    src: adminPanelImage,
+  },
+  {
+    title: 'Mobile App with Discount Offers',
+    subtitle:
+      'A seamless mobile app that allows customers to browse menus, place orders, and make payments directly from their phones.',
+    src: mobileApp2Image,
+  },
+  {
+    title: 'Web Application',
+    subtitle:
+      'Web version of Discount Offers application, which allows user to interact with system from a desktop browsers.',
+    src: webAppImage,
+  },
+])
+
+const responsiveOptions = [
+  {
+    breakpoint: '767px',
+    numVisible: 1,
+    numScroll: 1,
+  },
+]
+</script>
+
 <template>
   <section>
     <div class="row wrapper">
@@ -6,153 +52,28 @@
         Our portfolio features high-impact, custom low-code solutions for the restaurant platform,
         delivering fast, cost-effective results.
       </h3>
-      <div ref="sliderWrapper">
-        <div class="slider" ref="slider">
-          <div class="card" v-for="card in cards" :key="card.title">
-            <img :src="card.src" :alt="card.title" />
+      <Carousel
+        :value="cards"
+        :numVisible="2"
+        :numScroll="2"
+        :responsiveOptions="responsiveOptions"
+        circular
+      >
+        <template #item="{ data }">
+          <div class="card">
+            <img :src="data.src" :alt="data.title" />
             <div class="card-text">
-              <p>{{ card.title }}</p>
-              <span>{{ card.subtitle }}</span>
+              <p>{{ data.title }}</p>
+              <span>{{ data.subtitle }}</span>
             </div>
           </div>
-        </div>
-      </div>
+        </template>
+      </Carousel>
     </div>
   </section>
 </template>
-<script>
-import { enableScrollLock, disableScrollLock } from '@/helpers/scroll-lock.js'
-import { throttle } from '@/helpers/throttle.js'
 
-import mobileAppImage from '@/assets/content/slide-1.jpg'
-import adminPanelImage from '@/assets/content/slide-2.jpg'
-import mobileApp2Image from '@/assets/content/slide-3.jpg'
-import webAppImage from '@/assets/content/slide-4.jpg'
-
-export default {
-  name: 'Portfolio',
-  data() {
-    return {
-      cards: [
-        {
-          title: 'Mobile App for Restaurants',
-          subtitle:
-            'A loyalty and rewards system for frequent customers, offering points, discounts, and personalized promotions based on their dining preferences.',
-          src: mobileAppImage,
-        },
-        {
-          title: 'Admin Panel',
-          subtitle:
-            'Built-in analytics tools for tracking key metrics like sales, customer behavior, and inventory turnover to inform data-driven decisions.',
-          src: adminPanelImage,
-        },
-        {
-          title: 'Mobile App with Discount Offers',
-          subtitle:
-            'A seamless mobile app that allows customers to browse menus, place orders, and make payments directly from their phones.',
-          src: mobileApp2Image,
-        },
-        {
-          title: 'Web Application',
-          subtitle:
-            'Web version of Discount Offers application, which allows user to interact with system from a desktop browsers.',
-          src: webAppImage,
-        },
-      ],
-      isSliderVisible: false,
-      observer: null,
-      sliderScrollPosition: 0,
-      wheelHandler: null,
-    }
-  },
-  methods: {
-    handleSlider(event) {
-      if (!this.isSliderVisible) return
-
-      const slider = this.$refs.slider
-      const maxScrollLeft = slider.scrollWidth - slider.offsetWidth
-
-      let scrollLeft = -this.sliderScrollPosition + event.deltaY
-
-      if (scrollLeft <= 0 || scrollLeft >= maxScrollLeft) {
-        disableScrollLock()
-        this.isSliderVisible = false
-      }
-      if (scrollLeft <= 0) {
-        scrollLeft = 0
-      }
-      if (scrollLeft >= maxScrollLeft) {
-        scrollLeft = maxScrollLeft
-      }
-
-      slider.style.left = -scrollLeft + 'px'
-      this.sliderScrollPosition = -scrollLeft
-    },
-    initSlider() {
-      if (window.innerWidth < 1024) {
-        if (this.observer) {
-          this.observer.disconnect()
-          document.removeEventListener('wheel', this.wheelHandler)
-          disableScrollLock()
-
-          this.observer = null
-        }
-
-        return
-      }
-
-      if (this.observer) return
-
-      const sliderWrapper = this.$refs.sliderWrapper
-      const options = {
-        threshold: 0.9,
-      }
-
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (window.scrollToTopActive) {
-            this.sliderScrollPosition = 0
-
-            return
-          }
-
-          if (entry.isIntersecting) {
-            this.isSliderVisible = true
-
-            const marginTop =
-              window.scrollY +
-              entry.boundingClientRect.top -
-              (window.innerHeight / 2 - sliderWrapper.offsetHeight / 2) -
-              50
-
-            enableScrollLock(marginTop)
-          } else {
-            this.isSliderVisible = false
-
-            disableScrollLock()
-          }
-        })
-      }, options)
-
-      this.observer.observe(sliderWrapper)
-
-      document.addEventListener('wheel', this.wheelHandler)
-    },
-  },
-  mounted() {
-    // this.wheelHandler = throttle(this.handleSlider, 10)
-    //
-    // this.initSlider()
-    //
-    // window.screen.orientation.addEventListener('change', this.initSlider)
-  },
-}
-</script>
 <style scoped>
-section {
-  overflow: hidden;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -161,6 +82,7 @@ section {
 h2 {
   font-size: 16px;
   font-weight: 400;
+  padding-top: 50px;
 }
 h3 {
   font-size: 24px;
@@ -169,9 +91,8 @@ h3 {
   padding-block: 70px;
 }
 
-.slider {
-  display: flex;
-  gap: 36px;
+.card {
+  margin: 0.5rem;
 }
 .card img {
   aspect-ratio: 10 / 8;
@@ -195,22 +116,7 @@ h3 {
   font-weight: 400;
 }
 
-@media (width < 1024px) {
-  .slider {
-    flex-direction: column;
-  }
-}
-
 @media (width >= 1024px) {
-  .slider {
-    left: 0;
-    position: relative;
-    transition: left 0.1s;
-  }
-  .card {
-    flex-basis: calc(50% - 18px);
-    flex-shrink: 0;
-  }
   .card-text {
     padding-block: 30px;
   }
